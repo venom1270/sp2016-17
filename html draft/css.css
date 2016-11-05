@@ -1,0 +1,137 @@
+
+@media (min-width: 600px) and (max-width:900px) {
+	body {
+		margin:10px;
+	}
+	aside {
+		width:20%;
+		float:right;
+		background-color:red;
+		min-height:400px; /* Later use JS to set same size as section */
+	}
+	section {
+		width:80%;
+		float:left;
+		background-color:yellow;
+	}
+}
+@media (min-width: 900px) {
+	body {
+		margin:50px;
+	}
+	aside {
+		width:20%;
+		float:right;
+		background-color:red;
+		min-height:400px; /* Later use JS to set same size as section */
+	}
+	section {
+		width:80%; /* Change to fixed */
+		float: left;
+		background-color:yellow;
+	}
+}
+@media (max-width: 600px) {
+    body {
+        margin:5px;
+    }
+	aside {
+		width:100%;
+		float:right;
+		background-color:red;
+		min-height:400px; /* Later use JS to set same size as section */
+	}
+	section {
+		width:100%;
+		float:left;
+		background-color:yellow;
+	}
+}
+
+
+header {
+	width: 100%;
+	text-align:center;
+	margin:0px auto;
+	
+	background-color:gray;
+	height: 100px;
+}
+
+
+
+section article {
+	width: 90%;
+	height:75px;
+	padding:10px;
+	margin:30px auto;
+	border: 1px black solid;	
+	
+	background-color:blue;
+}
+
+section article .voteDiv {
+	float:left;
+	height:90%;
+	background-color: green;
+	font-size:30px;
+}
+section article .voteDiv:hover{
+	cursor:pointer;
+}
+
+section article .postTitle {
+	height:25px;
+	background-color: red;
+	padding-left:50px;
+	font-size:20px;
+	font-weight:bold;
+}
+
+section article .postCategory {
+	height:20x;
+	background-color: orange;
+	padding-left:50px;
+}
+
+section article .postDetails {
+	height:25px;
+	background-color: purple;
+	padding-left:50px;
+}
+
+
+
+aside #categoryFilters, aside #profile, aside #search {
+	padding:20px;
+}
+
+aside #profile {
+	background-color:blue;
+}
+
+aside #search {
+	background-color:green;
+}
+
+aside #categoryFilters {
+	background-color:purple;
+}
+
+footer {
+	width: 100%;
+	float:left;
+	background-color: gray;
+	text-align:center;
+	margin:0px auto;
+}
+
+.categoryTag {
+	border: 2px solid magenta;
+	font-size:12px;
+	font-style:italic;
+	font-weight:bold;
+	background-color:red;
+	border-radius:8px;
+	margin-right:10px;
+}
