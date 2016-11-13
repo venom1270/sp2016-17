@@ -1,5 +1,5 @@
 
-@media (min-width: 600px) and (max-width:900px) {
+@media (min-width: 600px) and (max-width:999px) {
 	body {
 		margin:10px;
 	}
@@ -14,10 +14,18 @@
 		float:left;
 		background-color:yellow;
 	}
+	#content {
+		width:100%;
+	}
 }
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
 	body {
-		margin:50px;
+		margin:40px;
+	}
+	#content {
+		display:block;
+		margin:0px auto;
+		width:940px;
 	}
 	aside {
 		width:20%;
@@ -26,10 +34,12 @@
 		min-height:400px; /* Later use JS to set same size as section */
 	}
 	section {
-		width:80%; /* Change to fixed */
+		width:80%; 
 		float: left;
 		background-color:yellow;
 	}
+	
+
 }
 @media (max-width: 600px) {
     body {
@@ -45,6 +55,9 @@
 		width:100%;
 		float:left;
 		background-color:yellow;
+	}
+	#content {
+		width:100%;
 	}
 }
 
@@ -62,22 +75,26 @@ header {
 
 section article {
 	width: 90%;
-	height:75px;
+	min-height:75px;
 	padding:10px;
 	margin:30px auto;
 	border: 1px black solid;	
 	
-	background-color:blue;
+	background-color:gray;
 }
 
 section article .voteDiv {
 	float:left;
 	height:90%;
 	background-color: green;
-	font-size:30px;
+	font-size:24px;
 }
 section article .voteDiv:hover{
 	cursor:pointer;
+}
+section article .voteDiv .voteNumber {
+	font-size:14px;
+	font-weight:bold;
 }
 
 section article .postTitle {
@@ -86,6 +103,13 @@ section article .postTitle {
 	padding-left:50px;
 	font-size:20px;
 	font-weight:bold;
+}
+
+section article .postContent {
+	background-color: violet;
+	margin-left:20px;
+	padding-left:20px;
+	border:1px gray solid;
 }
 
 section article .postCategory {
@@ -98,6 +122,7 @@ section article .postDetails {
 	height:25px;
 	background-color: purple;
 	padding-left:50px;
+	font-style:italic;
 }
 
 
@@ -134,4 +159,17 @@ footer {
 	background-color:red;
 	border-radius:8px;
 	margin-right:10px;
+}
+
+#fullPost {
+	height:auto;
+}
+
+.commentChain {
+	border:1px solid black;
+}
+
+.replyInput {
+	height:70px;
+	width:200px;
 }
