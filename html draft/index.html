@@ -12,14 +12,21 @@
 		
 		
 			<aside>
-				<div id="profile">PROFILE</div>
-				<div id="search">SEARCH</div>
-				<div id="categoryFilters">CATEGORY FILTERS</div>
+				<div id="profile">Logged in as <a href="profile.html">user1234</a> <a href="#">Logout</a></div>
+				<div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" src="images/search.png" /></div>
+				<div id="categoryFilters">
+					<form submit="POST">
+						<input type="checkbox" id="tag1" /><label><span class="categoryTag">Politics</span></label><br/>
+						<input type="checkbox" id="tag1" /><label><span class="categoryTag">Politics</span></label><br/>
+						<input type="checkbox" id="tag1" /><label><span class="categoryTag">Politics</span></label><br/>
+						<input type="submit" value="Apply filter" />
+					</form>
+				</div>
 			</aside>
 			
 			<section>
 				<article>
-					<div class="voteDiv"><span class="voteNumber">-99</span><br/>&uArr;<br/>&dArr;</div>
+					<div class="voteDiv"><span class="voteNumber">-99</span><br/><img class="voteArrow" src="images/arrow_up.png" /><br/><img class="voteArrow" src="images/arrow_down.png" /></div>
 					<div class="postTitle"><a href="post.html">Trump won the election!</a></div>
 					<div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
 					<div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>

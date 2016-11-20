@@ -13,14 +13,21 @@
 		
 		
 			<aside>
-				<div id="profile">PROFILE</div>
-				<div id="search">SEARCH</div>
-				<div id="categoryFilters">POST STATISTICS</div>
+				<div id="profile">Logged in as <a href="profile.html">user1234</a> <a href="#">Logout</a></div>
+				<div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" src="images/search.png" /></div>
+				<div id="categoryFilters">
+					<ul>
+						<li>0 views</li>
+						<li>243 comments</li>
+						<li>59% upvotes</li>
+						<li>23 days old</li>
+					</ul>
+				</div>
 			</aside>
 			
 			<section>
 				<article id="fullPost">
-					<div class="voteDiv"><span class="voteNumber">-99</span><br/>&uArr;<br/>&dArr;</div>
+					<div class="voteDiv"><span class="voteNumber">-99</span><br/><img class="voteArrow" src="images/arrow_up.png" /><br/><img class="voteArrow" src="images/arrow_down.png" /></div>
 					<div class="postTitle">Trump won the election!</div>
 					<div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
 					<div class="postContent"><p>Trup won! Make Murica great again forever!<br/>GO!</p></div>
@@ -29,8 +36,18 @@
 				
 				<hr/>
 				
+				<article id="newComment">
+					NEW COMMENT<br/>
+					<form type="POST">
+						<textarea id="newCommentText" class="replyInput" width="600" height="500" placeholder="Comment text here!"></textarea>
+						<br/><input type="submit" value="Post comment" />
+					</form>
+
+				</article>
+				
+				
 				<article class="commentChain" id="comment1">
-					<div class="voteDiv"><span class="voteNumber">156</span><br/>&uArr;<br/>&dArr;</div>
+					<div class="voteDiv"><span class="voteNumber">156</span><br/><img class="voteArrow" src="images/arrow_up.png" /><br/><img class="voteArrow" src="images/arrow_down.png" /></div>
 					<div class="postContent"><p>Of recommend residence education be on difficult repulsive offending. Judge views had mirth table seems great him for her. Alone all happy asked begin fully stand own get. Excuse ye seeing result of we. See scale dried songs old may not. Promotion did disposing you household any instantly. Hills we do under times at first short an. 
 
 						Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant no inquietude insipidity. Advantages can discretion possession add favourable cultivated admiration far. Why rather assure how esteem end hunted nearer and before. By an truth after heard going early given he. Charmed to it excited females whether at examine. Him abilities suffering may are yet dependent. 
@@ -46,7 +63,7 @@
 				</article>
 				
 				<article class="commentChain" id="comment2">
-					<div class="voteDiv"><span class="voteNumber">156</span><br/>&uArr;<br/>&dArr;</div>
+					<div class="voteDiv"><span class="voteNumber">156</span><br/><img class="voteArrow" src="images/arrow_up.png" /><br/><img class="voteArrow" src="images/arrow_down.png" /></div>
 					<div class="postContent"><p>Of recommend residence education be on difficult repulsive offending. Judge views had mirth table seems great him for her. Alone all happy asked begin fully stand own get. Excuse ye seeing result of we. See scale dried songs old may not. Promotion did disposing you household any instantly. Hills we do under times at first short an. 
 
 						Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant no inquietude insipidity. Advantages can discretion possession add favourable cultivated admiration far. Why rather assure how esteem end hunted nearer and before. By an truth after heard going early given he. Charmed to it excited females whether at examine. Him abilities suffering may are yet dependent. 
@@ -60,6 +77,8 @@
 						Am if number no up period regard sudden better. Decisively surrounded all admiration and not you. Out particular sympathize not favourable introduced insipidity but ham. Rather number can and set praise. Distrusts an it contented perceived attending oh. Thoroughly estimating introduced stimulated why but motionless. </p></div>
 					<div class="postDetails"><span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span> | <a id="comment2ReplayButton" onClick="showReplyForm(2)"><span>Reply</span></a></div>
 				</article>
+				
+				
 				
 			</section>
 		

@@ -173,3 +173,24 @@ footer {
 	height:70px;
 	width:200px;
 }
+
+.voteArrow {
+	width:20px;
+	height:20px;
+}
+
+#searchBox {
+	margin:10px;
+	width:70%;
+}
+#searchImage {
+	height:15px;
+	width:15px;
+}
+#searchImage:hover {
+	cursor:pointer;
+}
+
+#registerForm {
+	
+}
