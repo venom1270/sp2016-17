@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Forum - landing</title>
+	<link rel="stylesheet" type="text/css" href="css.css">
+	<script src="js/voting.js"></script>
+</head>
+<body>
+	
+	<div id="content">
+		<header><h1>LOGO</h1></header>
+		
+		
+			<aside>
+				<div id="profile">
+					Logged in as <a href="profile.html">user1234</a> <a href="#">Logout</a><br/>
+					<a href="register.html">Register new account.</a><br/>
+					<div id="newPost"><a id="newPostLink" href="newPost.html">Create new post</a></div>
+				</div>
+				
+				<div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" alt="Search" src="images/search.png" /></div>
+				<div id="categoryFilters">
+					<span class="boldSpan">Filter by catogory</span>
+					<form id="categoryFilterForm" method="POST" action="index.html">
+						<input type="checkbox" id="tag1" /><label><span class="categoryTag">Politics</span></label><br/>
+						<input type="checkbox" id="tag2" /><label><span class="categoryTag">Natural disaster</span></label><br/>
+						<input type="checkbox" id="tag3" /><label><span class="categoryTag">Food</span></label><br/>
+						<input type="submit" value="Apply filter" />
+					</form>
+				</div>
+			</aside>
+			
+			<section>
+				<article>
+					<div class="voteDiv"><span class="voteNumber">-99</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+					<div class="postTitle"><a href="post.html">Trump won the election!</a></div>
+					<div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
+					<div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
+				</article>
+				<article>
+					<div class="voteDiv"><span class="voteNumber">-99</span><br/><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+					<div class="postTitle"><a href="post.html">Trump won the election!</a></div>
+					<div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
+					<div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
+				</article>
+				<article>
+					<div class="voteDiv"><span class="voteNumber">-99</span><br/><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+					<div class="postTitle"><a href="post.html">Trump won the election!</a></div>
+					<div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
+					<div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
+				</article>
+				
+				<div class="pageNavigation">
+					<form method="GET" action="index.html">
+						<input type="button" value="Previous page" />
+						<input type="button" value="Next page" />
+					</form>
+				</div>
+				
+				<!--<article>Post 2</article>
+				<article>Post 3</article>-->
+				
+			</section>
+		
+		
+		
+		<footer>
+			<h4>Copyright &copy; 2016</h4>
+		</footer>
+	</div>
+	
+</body>
+</html>
