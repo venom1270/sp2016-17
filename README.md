@@ -11,6 +11,9 @@ The website is designed to look as simple as possible and to provide an easily u
 
 The design is very reddit-like, so if you're familiar with that, you should have no problem navigating and using this website.
 
+## Usage / features
+You can look at all the posts and comments without logging in/registering, but to make a post, comment or vote yourself, you will have to be logged in. All posts have tags to make filtering through them easier (e.g. "Politics" tag, "Food" tag, etc.). You can comment other peoples posts and even comment other comments. This can create long comment-chain discussions. Each individual post and comment can be upvoted or downvoted. You can look at other peoples post and comment history and profile statistics.
+
 ## Compatibility issues
 
 The website was tested in latest versions of Google Chrome, Mozilla Firefox, Opera, Internet Exploere and Microsoft Edge. It works flawlessly in Chrome, Firefox and Opera, while Internet Explorer sometimes has some problems with the 'placeholder' attribute. Microsoft Edge doesen't seem to want to connect to the websocket.
