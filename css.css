@@ -82,7 +82,12 @@ header {
 	background-color:gray;
 	height: 100px;
 }
-
+header img {
+	height:90px;
+}
+header img:hover {
+	cursor:pointer;
+}
 
 
 section article {
@@ -267,6 +272,9 @@ footer {
 	font-weight: bold;
 	font-size:18px;
 }
+.width50 {
+	width:50%;
+}
 
 .replyClick {
 	text-decoration:underline;
@@ -326,3 +334,27 @@ input {
 	margin:5px;
 }
 
+#changeCredentialsForm {
+	width:80%;
+	margin:0px auto;
+}
+#changeCredentialsWrapper {
+
+	margin:0px auto;
+}
+#changeCredentialsForm label{
+	width:130px;
+	display:inline-block;
+}
+#changeCredentialsForm input{
+	width:50%;
+	width:170px;
+}
+#changeCredentialsForm input[type="submit"]{
+	width:50%;
+	width:300px;
+}
+
+.hidden {
+	display:none;
+}

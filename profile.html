@@ -5,11 +5,13 @@
 	<title>Forum - landing</title>
 	<link rel="stylesheet" type="text/css" href="css.css">
 	<script src="js/voting.js"></script>
+	<script src="js/ws.js"></script>
+	<script src="js/profile.js"></script>
 </head>
 <body>
 	
 	<div id="content">
-		<header><a href="index.html"><h1>LOGO</h1></a></header>
+		<header><a href="index.html"><img src="images/logo.png" alt="LOGO" /></a></header>
 		
 		
 			<aside>
@@ -28,6 +30,21 @@
 			<section>
 			
 				<h2 class="center width100">user1234's Profile page</h2>
+			
+			
+				
+				<h3 class="width50 center">Change profile details</h3>
+				<div id="changeCredentialsWrapper">
+					<form method="POST" id="changeCredentialsForm">
+						<label>Change Email: </label><input id="changeEmailInput" type="text" value="user1234@gmail.com" /><span class="hidden" id="emailChangedNote">Email changed</span><br/>
+						<label>Change Password:</label><input class="changePasswordInput" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br/>
+						<label>Repeat Password:</label><input class="changePasswordInput" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br/>
+						<input type="submit" value="Apply changes" />
+					</form>
+				</div>
+				<br/>
+			
+				<h3 class="width50 center">Post & comment history</h3>
 			
 				<article class="fullPost">
 					<div class="voteDiv"><span class="voteNumber">-99</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>

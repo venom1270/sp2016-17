@@ -1,6 +1,9 @@
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
 	initVotingEventListeners();
-}
+});
+
+var voteObject;
+var voteBuffer;
 
 function initVotingEventListeners() {
 	var upvoteArrows = document.getElementsByClassName("upvoteArrow");
@@ -15,6 +18,11 @@ function initVotingEventListeners() {
 	
 }
 
+function insertVote() {
+	voteObject.innerHTML = voteBuffer;
+	initVotingEventListeners();
+}
+
 function upvoteArticle(event) {
 	console.log("Upvote");
 	event.target.style.backgroundImage = "url('images/arrow_up_hover.png')";
@@ -23,6 +31,12 @@ function upvoteArticle(event) {
 	var voteNumber = parseInt(voteNumberSpan.innerHTML);
 	
 	var dataVote = event.target.parentNode.getAttribute("data-vote");
+	
+	console.log("SENDING")
+	webSocket.send(JSON.stringify({
+	  requestType: "vote",
+	  type: "Upvote"
+	}));
 	
 	if (dataVote == "down") {
 		event.target.parentNode.getElementsByClassName("downvoteArrow")[0].style.backgroundImage = "url('images/arrow_down.png')";
@@ -36,7 +50,9 @@ function upvoteArticle(event) {
 		number = 1;
 		event.target.parentNode.setAttribute("data-vote", "up");
 	}
-	voteNumberSpan.innerHTML = voteNumber + number;
+	//voteNumberSpan.innerHTML = voteNumber + number;
+	voteObject = voteNumberSpan;
+	voteBuffer = voteNumber + number;
 	
 	
 }
@@ -48,6 +64,12 @@ function downvoteArticle(event) {
 	var voteNumber = parseInt(voteNumberSpan.innerHTML);
 	
 	var dataVote = event.target.parentNode.getAttribute("data-vote");
+	
+	console.log("SENDING")
+	webSocket.send(JSON.stringify({
+	  requestType: "vote",
+	  type: "Downvote"
+	}));
 	
 	if (dataVote == "up") {
 		event.target.parentNode.getElementsByClassName("upvoteArrow")[0].style.backgroundImage = "url('images/arrow_up.png')";
@@ -61,5 +83,7 @@ function downvoteArticle(event) {
 		number = -1;
 		event.target.parentNode.setAttribute("data-vote", "down");
 	}
-	voteNumberSpan.innerHTML = voteNumber + number;
+	//voteNumberSpan.innerHTML = voteNumber + number;
+	voteObject = voteNumberSpan;
+	voteBuffer = voteNumber + number;
 }
