@@ -29,6 +29,8 @@ Most of the functionallity relies on the backend - database for providing posts,
 
 The only potentially big problem right now muight be really long comment chains and how to show them in HTML. Some kind of collapsable menu or a whole page dedicated to only showing comment chains is required.
 
+## Websockets remark
+To take full advantage of this site, please run the websocket server in 'websocket' folder.
 
 
 
