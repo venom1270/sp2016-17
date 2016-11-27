@@ -8,11 +8,11 @@ function initPostsEventListeners() {
 	var postReplyBtns = document.getElementsByClassName("btnPostReply");
 	//console.log(postReplyBtns)
 	for (var i = 0; i < postReplyBtns.length; i++) {
-		postReplyBtns[i].addEventListener("click", postReply, event);
+		postReplyBtns[i].addEventListener("click", postReply);
 	}
 	
-	document.getElementById("btnPostComment").addEventListener("click", postComment, event);
-	document.getElementById("btnPostComment").addEventListener("click", postComment, event);
+	document.getElementById("btnPostComment").addEventListener("click", postComment);
+	document.getElementById("btnPostComment").addEventListener("click", postComment);
 	
 }
 

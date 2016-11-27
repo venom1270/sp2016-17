@@ -5,17 +5,17 @@ window.onload = function() {
 function initVotingEventListeners() {
 	var upvoteArrows = document.getElementsByClassName("upvoteArrow");
 	for (var i = 0; i < upvoteArrows.length; i++) {
-		upvoteArrows[i].addEventListener("click", upvoteArticle, event);
+		upvoteArrows[i].addEventListener("click", upvoteArticle);
 	}
 	
 	var downvoteArrows = document.getElementsByClassName("downvoteArrow");
 	for (var i = 0; i < upvoteArrows.length; i++) {
-		downvoteArrows[i].addEventListener("click", downvoteArticle, event);
+		downvoteArrows[i].addEventListener("click", downvoteArticle);
 	}
 	
 }
 
-function upvoteArticle() {
+function upvoteArticle(event) {
 	console.log("Upvote");
 	event.target.style.backgroundImage = "url('images/arrow_up_hover.png')";
 	
@@ -40,7 +40,7 @@ function upvoteArticle() {
 	
 	
 }
-function downvoteArticle() {
+function downvoteArticle(event) {
 	console.log("Downvote");
 	event.target.style.backgroundImage = "url('images/arrow_down_hover.png')";
 	
