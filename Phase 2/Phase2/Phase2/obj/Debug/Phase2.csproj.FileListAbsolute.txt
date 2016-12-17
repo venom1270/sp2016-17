@@ -51,3 +51,10 @@ C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Newtonsoft
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.csprojResolveAssemblyReference.cache
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.dll
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.pdb
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\EntityFramework.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\EntityFramework.SqlServer.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\EntityFramework.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\EntityFramework.SqlServer.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.Initial.resources
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.csproj.GenerateResource.Cache
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.Initial1.resources

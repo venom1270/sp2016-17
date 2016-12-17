@@ -1,0 +1,10 @@
+﻿DELETE FROM Comments;
+DELETE FROM Posts;
+DELETE FROM Categories;
+DELETE FROM PostCategories;
+DELETE FROM Users;
+
+DBCC CHECKIDENT ('[Comments]', RESEED, 0);
+DBCC CHECKIDENT ('[Posts]', RESEED, 0);
+DBCC CHECKIDENT ('[Categories]', RESEED, 0);
+DBCC CHECKIDENT ('[Users]', RESEED, 0);
