@@ -58,3 +58,4 @@ C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\EntityFram
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.Initial.resources
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.csproj.GenerateResource.Cache
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.Initial1.resources
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.InitialCreate.resources

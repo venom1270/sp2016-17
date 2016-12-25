@@ -1,6 +1,79 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    //ViewBag.Title = "Home Page";
 }
+
+<aside>
+    <div id="profile">
+        Logged in as <a href="profile.html">user1234</a> <a href="#">Logout</a><br />
+        <a href="register.html">Register new account.</a><br />
+        <div id="newPost"><a id="newPostLink" href="newPost.html">Create new post</a></div>
+    </div>
+
+    <div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" alt="Search" src="~/Content/Images/search.png" /></div>
+    <div id="categoryFilters">
+        <span class="boldSpan">Filter by catogory</span>
+        <form id="categoryFilterForm" method="POST" action="index.html">
+            <!--<input type="checkbox" id="tag1" /><label><span class="categoryTag">Politics</span></label><br />
+            <input type="checkbox" id="tag2" /><label><span class="categoryTag">Natural disaster</span></label><br />
+            <input type="checkbox" id="tag3" /><label><span class="categoryTag">Food</span></label><br />-->
+            @foreach (var Category in ViewBag.CategoriesList)
+            {
+                <input type="checkbox" id="@Category.CategoryId" /><label><span class="categoryTag">@Category.Name</span></label><br />
+            }
+                    
+            <input type="submit" value="Apply filter" />
+        </form>
+    </div>
+</aside>
+
+<section>
+    <!--<article>
+        <div class="voteDiv"><span class="voteNumber">-99</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+        <div class="postTitle"><a href="post.html">Trump won the election!</a></div>
+        <div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
+        <div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
+    </article>
+    <article>
+        <div class="voteDiv"><span class="voteNumber">-99</span><br /><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+        <div class="postTitle"><a href="post.html">Trump won the election!</a></div>
+        <div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
+        <div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
+    </article>
+    <article>
+        <div class="voteDiv"><span class="voteNumber">-99</span><br /><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+        <div class="postTitle"><a href="post.html">Trump won the election!</a></div>
+        <div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
+        <div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
+    </article>-->
+
+    @foreach (var Post in ViewBag.Posts)
+    {
+        <article>
+            <div class="voteDiv"><span class="voteNumber">@Post.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="postTitle"><a href="post.html">@Post.Title</a></div>
+            <div class="postCategory">
+                @foreach (var Category in Post.Categories)
+                {
+                    <span class="categoryTag">@Category.Name</span>
+                }
+            </div>
+            <div class="postDetails"><span class="commentCounter">@Post.Comments.Count comments</span> | <span>Posted on @Post.CreationDate</span> | <span>Posted by @Post.User.Username</span></div>
+        </article>
+    }
+
+    <div class="pageNavigation">
+        <form method="GET" action="index.html">
+            <input type="button" value="Previous page" />
+            <input type="button" value="Next page" />
+        </form>
+    </div>
+
+    <!--<article>Post 2</article>
+    <article>Post 3</article>-->
+
+</section>
+
+<!--
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -29,3 +102,5 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+    -->

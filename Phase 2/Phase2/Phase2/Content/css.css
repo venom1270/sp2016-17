@@ -1,0 +1,360 @@
+
+body {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+100;Grey+Flat */
+background: #eeeeee; /* Old browsers */
+background: -moz-linear-gradient(top, #eeeeee 0%, #eeeeee 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #eeeeee 0%,#eeeeee 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #eeeeee 0%,#eeeeee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+font-family:"Calibri";
+}
+
+@media (min-width: 800px) and (max-width:1199px) {
+	body {
+		margin:10px;
+	}
+	aside {
+		width:30%;
+		float:right;
+		background-color:silver;
+		min-height:100px; /* Later use JS to set same size as section */
+	}
+	section {
+		width:70%;
+		float:left;
+		background-color:transparent;
+		
+	}
+	#content {
+		width:100%;
+	}
+}
+@media (min-width: 1200px) {
+	body {
+		margin:40px;
+	}
+	#content {
+		display:block;
+		margin:0px auto;
+		width:1150px;
+	}
+	aside {
+		width:25%;
+		float:right;
+		background-color:silver;
+		min-height:100px; /* Later use JS to set same size as section */
+		height:100%;
+	}
+	section {
+		width:75%; 
+		float: left;
+		background-color:transparent;
+	}
+	
+
+}
+@media (max-width: 800px) {
+    body {
+        margin:5px;
+    }
+	aside {
+		width:100%;
+		float:right;
+		background-color:silver;
+		min-height:100px; /* Later use JS to set same size as section */
+	}
+	section {
+		width:100%;
+		float:left;
+		background-color:transparent;
+	}
+	#content {
+		width:100%;
+	}
+}
+
+
+header {
+	width: 100%;
+	text-align:center;
+	margin:0px auto;
+	
+	background-color:gray;
+	height: 100px;
+}
+header img {
+	height:90px;
+}
+header img:hover {
+	cursor:pointer;
+}
+
+
+section article {
+	width: 90%;
+	min-height:75px;
+	padding:10px;
+	margin:30px auto;
+	margin-bottom:5px;
+	margin-right:5px;
+	border: 1px black solid;
+	
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+section article:hover {
+	background:#e0e0e0;
+	transition: background 0.2s;
+}
+
+section article .voteDiv {
+	float:left;
+	height:90%;
+	background-color:transparent;
+	font-size:24px;
+}
+section article .voteDiv:hover{
+	cursor:pointer;
+}
+section article .voteDiv .voteNumber {
+	font-size:14px;
+	font-weight:bold;
+}
+
+section article .postTitle {
+	height:25px;
+	background-color:transparent;
+	padding-left:50px;
+	font-size:20px;
+	font-weight:bold;
+}
+
+section article .postContent {
+	background-color:transparent;
+	margin-left:30px;
+	padding-left:20px;
+	padding-right:20px;
+	
+}
+
+section article .postCategory {
+	/*height:20px;*/
+	background-color:transparent;
+	padding-left:50px;
+	margin-bottom:6px;
+	padding-bottom:9px;
+	border-bottom:1px black solid;
+}
+
+section article .postDetails {
+	height:25px;
+	margin-top:10px;
+	background-color:transparent;
+	padding-left:50px;
+	font-style:italic;
+	font-weight:bold;
+}
+
+aside #categoryFilters, aside #profile, aside #search {
+	padding:10px;
+}
+
+aside #profile {
+	background-color:silver;
+}
+
+aside #search {
+	background-color:silver;
+}
+
+aside #categoryFilters {
+	background-color:silver;
+}
+
+footer {
+	width: 100%;
+	float:left;
+	background-color: gray;
+	text-align:center;
+	margin:0px auto;
+}
+
+.categoryTag {
+	border: 2px solid black;
+	font-size:12px;
+	font-style:italic;
+	font-weight:bold;
+	background-color:lightgray;
+	border-radius:8px;
+	margin-right:10px;
+	padding:2px;
+}
+
+.fullPost {
+	height:auto;
+}
+
+.commentChain {
+	border:1px solid black;
+}
+
+.replyInput {
+	height:70px;
+	width:99%;
+}
+
+/*.downvoteArrow:hover {
+	background-image:url('images/arrow_down_hover.png');
+}
+.upvoteArrow:hover {
+	background-image:url('images/arrow_up_hover.png');
+}*/
+.upvoteArrow {
+	background-image:url('~/Content/Images/arrow_up.png');
+}
+.downvoteArrow {
+	background-image:url('~/Content/Images/arrow_down.png');
+}
+.upvoteArrow, .downvoteArrow {
+	width:25px;
+	height:25px;
+	background-size: 25px 25px;
+    background-repeat: no-repeat;
+	margin-top:0px;
+}
+
+#searchBox {
+	margin:10px;
+	width:80%;
+}
+#searchImage {
+	height:15px;
+	width:15px;
+}
+#searchImage:hover {
+	cursor:pointer;
+}
+
+#registerForm, #loginForm{
+	margin: 0px auto;
+	width:300px;
+}
+#registerWrapper, #loginWrapper{
+	position: relative;
+	margin:0px auto;
+	width:100%;
+}
+#registerForm label, #loginForm label {
+	width:200px;
+	display:block;
+}
+#registerForm input, #loginForm input {
+	width:300px;
+	margin-bottom:10px;
+}
+
+.center {
+	text-align:center;
+}
+.padding5 {
+	padding:5px;
+}
+.width100 {
+	width:100%;
+}
+.centerDiv {
+	margin:0px auto;
+}
+.boldSpan {
+	font-weight: bold;
+	font-size:18px;
+}
+.width50 {
+	width:50%;
+}
+
+.replyClick {
+	text-decoration:underline;
+}
+.replyClick:hover {
+	cursor:pointer;
+}
+/*.replyClick:active ~ .reply {
+	display:block;
+}*/
+.reply {
+	display:none;
+}
+
+#newPost {
+	width:100%;
+	margin-top:10px;
+}
+input {
+	padding:5px;
+}
+
+#newPostLink {
+}
+
+#inputPostContent {
+	width:100%;
+	height:400px;
+}
+#newPostWrapper {
+	width:100%;
+	height:80%;
+	position:relative;
+}
+#newPostForm {
+	margin:0px auto;
+	width:50%;
+}
+
+#categoryFilterForm > input {
+	margin:5px;
+}
+
+.pageNavigation {
+	margin-left:30px;
+	margin-bottom:30px;
+}
+
+#newCommentText {
+	width:99%;
+}
+
+/* New Post category div */
+#categoryDiv {
+	border:1px solid silver;
+	padding:5px;
+	margin:5px;
+}
+
+#changeCredentialsForm {
+	width:80%;
+	margin:0px auto;
+}
+#changeCredentialsWrapper {
+
+	margin:0px auto;
+}
+#changeCredentialsForm label{
+	width:130px;
+	display:inline-block;
+}
+#changeCredentialsForm input{
+	width:50%;
+	width:170px;
+}
+#changeCredentialsForm input[type="submit"]{
+	width:50%;
+	width:300px;
+}
+
+.hidden {
+	display:none;
+}

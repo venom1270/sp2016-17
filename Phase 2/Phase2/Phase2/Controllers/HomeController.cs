@@ -1,4 +1,5 @@
 ﻿using Phase2.Models;
+using Phase2.Models.EntityManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,14 @@ namespace Phase2.Controllers
 {
     public class HomeController : Controller
     {
+        private EntityDataModel db = new EntityDataModel();
+
         public ActionResult Index()
         {
+            ViewBag.CategoriesList = db.Categories.ToList();
+
+            ViewBag.Posts = db.Posts.ToList();
+
             return View();
         }
 

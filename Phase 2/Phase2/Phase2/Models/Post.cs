@@ -22,5 +22,6 @@ namespace Phase2.Models
         public virtual User User { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
