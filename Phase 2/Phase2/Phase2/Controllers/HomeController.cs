@@ -18,11 +18,11 @@ namespace Phase2.Controllers
             ViewBag.CategoriesList = db.Categories.ToList();
 
             ViewBag.Posts = db.Posts.ToList();
-
+            
             return View();
         }
 
-        public ActionResult About()
+        /*public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -40,6 +40,6 @@ namespace Phase2.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
+        }*/
     }
 }

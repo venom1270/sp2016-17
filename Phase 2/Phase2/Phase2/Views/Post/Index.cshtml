@@ -1,51 +1,115 @@
-﻿@model IEnumerable<Phase2.Models.Post>
+﻿<aside>
+    <div id="profile">Logged in as <a href="profile.html">user1234</a> <a href="#">Logout</a></div>
+    <div><input id="searchBox" type="text" placeholder="Search" /><img alt="Search" id="searchImage" src="~/Content/Images/search.png" /></div>
+    <div id="categoryFilters">
+        <ul>
+            <li>0 views</li>
+            <li>243 comments</li>
+            <li>59% upvotes</li>
+            <li>23 days old</li>
+        </ul>
+    </div>
+</aside>
 
-@{
-    ViewBag.Title = "Index";
+<section>
+    <article id="fullPost">
+        <div class="voteDiv"><span class="voteNumber">@ViewBag.Post.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+        <div class="postTitle">@ViewBag.Post.Title</div>
+        <div class="postCategory">
+            @foreach (var Category in ViewBag.Post.Categories)
+            {
+                <span class="categoryTag">@Category.Name</span>
+            }
+        </div>
+        <div class="postContent">@ViewBag.Post.Content</div>
+        <div class="postDetails"><span class="commentCounter">@ViewBag.Comments.Count replies</span> | <span>Posted on @ViewBag.Post.CreationDate</span> | <span>Posted by @ViewBag.Post.User.Username</span></div>
+    </article>
+
+    <hr />
+
+    <article id="newComment">
+        NEW COMMENT<br />
+
+        <form method="post" action="@Url.Action("NewComment", "Post", new { @postId = ViewBag.Post.PostId })">
+            @Html.AntiForgeryToken()
+            <textarea id="newCommentText" name="newCommentText" class="replyInput" placeholder="Comment text here!"></textarea>
+            <br /><input id="btnPostComment" type="submit" value="Post comment" />
+        </form>
+    </article>
+
+
+    <!--<article class="commentChain" id="comment1">
+        <div class="voteDiv"><span class="voteNumber">156</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+        <div class="postContent">
+            <p>
+                Of recommend residence education be on difficult repulsive offending. Judge views had mirth table seems great him for her. Alone all happy asked begin fully stand own get. Excuse ye seeing result of we. See scale dried songs old may not. Promotion did disposing you household any instantly. Hills we do under times at first short an.
+
+                Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant no inquietude insipidity. Advantages can discretion possession add favourable cultivated admiration far. Why rather assure how esteem end hunted nearer and before. By an truth after heard going early given he. Charmed to it excited females whether at examine. Him abilities suffering may are yet dependent.
+
+                Perceived end knowledge certainly day sweetness why cordially. Ask quick six seven offer see among. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitor we private removed. Moderate do subjects to distance.
+
+                Advanced extended doubtful he he blessing together. Introduced far law gay considered frequently entreaties difficulty. Eat him four are rich nor calm. By an packages rejoiced exercise. To ought on am marry rooms doubt music. Mention entered an through company as. Up arrived no painful between. It declared is prospect an insisted pleasure.
+
+                Saw yet kindness too replying whatever marianne. Old sentiments resolution admiration unaffected its mrs literature. Behaviour new set existence dashwoods. It satisfied to mr commanded consisted disposing engrossed. Tall snug do of till on easy. Form not calm new fail.
+
+                Am if number no up period regard sudden better. Decisively surrounded all admiration and not you. Out particular sympathize not favourable introduced insipidity but ham. Rather number can and set praise. Distrusts an it contented perceived attending oh. Thoroughly estimating introduced stimulated why but motionless.
+            </p>
+        </div>
+        <div class="postDetails"><span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span> | <a class="replyClick" onclick="showReplyForm(1)"><span>Reply</span></a></div>
+        <div id="replyForm1" class="postContent commentChain padding5 reply"><textarea class="replyInput" placeholder="Type reply text here!"></textarea><br /><input type="button" data-replyTo="1" class="btnPostReply" id="btnPostReply_1" value="Post reply" /></div>
+
+
+    </article>
+
+    <article class="commentChain" id="comment2">
+        <div class="voteDiv"><span class="voteNumber">156</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+        <div class="postContent">
+            <p>
+                Of recommend residence education be on difficult repulsive offending. Judge views had mirth table seems great him for her. Alone all happy asked begin fully stand own get. Excuse ye seeing result of we. See scale dried songs old may not. Promotion did disposing you household any instantly. Hills we do under times at first short an.
+
+                Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant no inquietude insipidity. Advantages can discretion possession add favourable cultivated admiration far. Why rather assure how esteem end hunted nearer and before. By an truth after heard going early given he. Charmed to it excited females whether at examine. Him abilities suffering may are yet dependent.
+
+                Perceived end knowledge certainly day sweetness why cordially. Ask quick six seven offer see among. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitor we private removed. Moderate do subjects to distance.
+
+                Advanced extended doubtful he he blessing together. Introduced far law gay considered frequently entreaties difficulty. Eat him four are rich nor calm. By an packages rejoiced exercise. To ought on am marry rooms doubt music. Mention entered an through company as. Up arrived no painful between. It declared is prospect an insisted pleasure.
+
+                Saw yet kindness too replying whatever marianne. Old sentiments resolution admiration unaffected its mrs literature. Behaviour new set existence dashwoods. It satisfied to mr commanded consisted disposing engrossed. Tall snug do of till on easy. Form not calm new fail.
+
+                Am if number no up period regard sudden better. Decisively surrounded all admiration and not you. Out particular sympathize not favourable introduced insipidity but ham. Rather number can and set praise. Distrusts an it contented perceived attending oh. Thoroughly estimating introduced stimulated why but motionless.
+            </p>
+        </div>
+        <div class="postDetails"><span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span> | <a class="replyClick" onclick="showReplyForm(2)"><span>Reply</span></a></div>
+        <div id="replyForm2" class="postContent commentChain padding5 reply"><textarea class="replyInput" placeholder="Type reply text here!"></textarea><br /><input type="button" data-replyTo="2" class="btnPostReply" id="btnPostReply_2" value="Post reply" /></div>
+    </article>-->
+
+
+    @CommentChain(ViewBag.Comments)
+
+
+</section>
+
+@helper CommentChain(IEnumerable<Phase2.Models.Comment> Comments)
+{
+    foreach (Phase2.Models.Comment Comment in Comments)
+    {
+        <article class="commentChain" id="comment_@Comment.CommentId">
+            <div class="voteDiv"><span class="voteNumber">@Comment.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="postContent">
+                @Comment.Content
+            </div>
+            <div class="postDetails"><span>Posted on @Comment.CreationDate</span> | <span>Posted by @Comment.User.Username</span> | <a class="replyClick" onclick="showReplyForm(@Comment.CommentId)"><span>Reply</span></a></div>
+            <div id="replyForm_@Comment.CommentId" class="postContent commentChain padding5 reply">
+                <form method="post" action="@Url.Action("NewComment", "Post", new { @postId = ViewBag.Post.PostId })">
+                    <textarea name="newCommentText" class="replyInput" placeholder="Type reply text here!"></textarea><br />
+                    <input type="text" style="display:none;" value="@Comment.CommentId" name="textParentComment" id="textParentComment" />
+                    <!--<input type="button" data-replyTo="" class="btnPostReply" id="btnPostReply_" value="Post reply" />-->
+                    <input type="submit" value="Post reply" class="btnPostReply" />
+                </form>
+            </div>
+            @if (Comment.ChildComments != null && Comment.ChildComments.Any())
+            {
+                @CommentChain(Comment.ChildComments)
+            }
+        </article>
+    }
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Upvotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Upvotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PostId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PostId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PostId })
-        </td>
-    </tr>
-}
-
-</table>

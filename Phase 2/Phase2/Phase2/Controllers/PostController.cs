@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Phase2.Models;
 using Phase2.Models.EntityManager;
+using System.Net.Http;
+using System.Web.Helpers;
 
 namespace Phase2.Controllers
 {
@@ -15,114 +17,107 @@ namespace Phase2.Controllers
     {
         private EntityDataModel db = new EntityDataModel();
 
+        private void ValidateRequestHeader(HttpRequestMessage request)
+        {
+            string cookieToken = "";
+            string formToken = "";
+
+            IEnumerable<string> tokenHeaders;
+            if (request.Headers.TryGetValues("RequestVerificationToken", out tokenHeaders))
+            {
+                string[] tokens = tokenHeaders.First().Split(':');
+                if (tokens.Length == 2)
+                {
+                    cookieToken = tokens[0].Trim();
+                    formToken = tokens[1].Trim();
+                }
+            }
+            AntiForgery.Validate(cookieToken, formToken);
+        }
+
         // GET: Post
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+
+            int postId = GetCurrentPostId();
+            // Get requested post
+
+            Post post = GetPostById(postId);
+
+            ViewBag.Post = post;
+
+            // Get post comments
+            List<Comment> comments = db.Comments.Where(c => c.Post.PostId == postId && c.ParentCommentId == null).ToList();
+            ViewBag.Comments = comments;
+
+            return View("Index");
         }
 
-        // GET: Post/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
-
-        // GET: Post/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Post/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        // POST new comment
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostId,Title,Content,Upvotes,CreationDate")] Post post)
+        public ActionResult NewComment()
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Posts.Add(post);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                string commentContent = Request["newCommentText"];
+                string parentComment = Request["textParentComment"];
 
-            return View(post);
+                if (commentContent != null)
+                {
+                    Comment newComment = new Comment();
+                    newComment.Content = commentContent;
+                    newComment.CreationDate = DateTime.Now;
+                    newComment.Post = GetCurrentPost();
+                    newComment.User = newComment.Post.User;
+                    newComment.Upvotes = 0;
+
+                    if (parentComment != null && parentComment != "")
+                    {
+                        int parentId = Convert.ToInt32(parentComment);
+                        Comment parent = db.Comments.Where(c => c.CommentId == parentId).First();
+                        newComment.ParentCommentId = parentId;
+                        newComment.ParentComment = parent;
+                    }
+
+                    db.Comments.Add(newComment);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    string tmp = "zbris to pol";
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            
+            
+            return Index();
         }
 
-        // GET: Post/Edit/5
-        public ActionResult Edit(int? id)
+        private Post GetCurrentPost()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
+            return GetPostById(GetCurrentPostId());
         }
 
-        // POST: Post/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostId,Title,Content,Upvotes,CreationDate")] Post post)
+        private int GetCurrentPostId()
         {
-            if (ModelState.IsValid)
+            if (Request.QueryString["postId"] == null)
             {
-                db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return 1;
             }
-            return View(post);
+            else
+            {
+                string postidstring = Request.QueryString["postId"];
+                return Convert.ToInt32(postidstring);
+            }
         }
 
-        // GET: Post/Delete/5
-        public ActionResult Delete(int? id)
+        private Post GetPostById(int postId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
+            return db.Posts.Where(p => p.PostId == postId).FirstOrDefault(); ;
         }
 
-        // POST: Post/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

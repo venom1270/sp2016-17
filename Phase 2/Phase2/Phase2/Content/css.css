@@ -213,10 +213,10 @@ footer {
 	background-image:url('images/arrow_up_hover.png');
 }*/
 .upvoteArrow {
-	background-image:url('~/Content/Images/arrow_up.png');
+	background-image:url('Images/arrow_up.png');
 }
 .downvoteArrow {
-	background-image:url('~/Content/Images/arrow_down.png');
+	background-image:url('Images/arrow_down.png');
 }
 .upvoteArrow, .downvoteArrow {
 	width:25px;
