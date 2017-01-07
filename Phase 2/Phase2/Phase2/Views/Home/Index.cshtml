@@ -4,21 +4,18 @@
 
 <aside>
     <div id="profile">
-        Logged in as <a href="profile.html">user1234</a> <a href="#">Logout</a><br />
+        Logged in as @Html.ActionLink("PLACEHOLDER", "Index", "Profile") <a href="#">Logout</a><br />
         <a href="register.html">Register new account.</a><br />
-        <div id="newPost"><a id="newPostLink" href="newPost.html">Create new post</a></div>
+        <div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
     </div>
 
     <div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" alt="Search" src="~/Content/Images/search.png" /></div>
     <div id="categoryFilters">
         <span class="boldSpan">Filter by catogory</span>
         <form id="categoryFilterForm" method="POST" action="index.html">
-            <!--<input type="checkbox" id="tag1" /><label><span class="categoryTag">Politics</span></label><br />
-            <input type="checkbox" id="tag2" /><label><span class="categoryTag">Natural disaster</span></label><br />
-            <input type="checkbox" id="tag3" /><label><span class="categoryTag">Food</span></label><br />-->
             @foreach (var Category in ViewBag.CategoriesList)
             {
-                <input type="checkbox" id="@Category.CategoryId" /><label><span class="categoryTag">@Category.Name</span></label><br />
+                <input type="checkbox" id="@Category.CategoryId" name="@Category.CategoryId"/><label><span class="categoryTag">@Category.Name</span></label><br />
             }
                     
             <input type="submit" value="Apply filter" />
@@ -27,30 +24,12 @@
 </aside>
 
 <section>
-    <!--<article>
-        <div class="voteDiv"><span class="voteNumber">-99</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
-        <div class="postTitle"><a href="post.html">Trump won the election!</a></div>
-        <div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
-        <div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
-    </article>
-    <article>
-        <div class="voteDiv"><span class="voteNumber">-99</span><br /><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
-        <div class="postTitle"><a href="post.html">Trump won the election!</a></div>
-        <div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
-        <div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
-    </article>
-    <article>
-        <div class="voteDiv"><span class="voteNumber">-99</span><br /><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
-        <div class="postTitle"><a href="post.html">Trump won the election!</a></div>
-        <div class="postCategory"><span class="categoryTag">Politics</span><span class="categoryTag">Natural disaster</span></div>
-        <div class="postDetails"><span class="commentCounter">5 replies</span> | <span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span></div>
-    </article>-->
 
     @foreach (var Post in ViewBag.Posts)
     {
         <article>
             <div class="voteDiv"><span class="voteNumber">@Post.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
-            <div class="postTitle">@Html.ActionLink("Post", "Index", "Post", new { @postId = Post.PostId }, null)</div>
+            <div class="postTitle">@Html.ActionLink((string)Post.Title, "Index", "Post", new { @postId = Post.PostId }, null)</div>
             <div class="postCategory">
                 @foreach (var Category in Post.Categories)
                 {
@@ -73,34 +52,3 @@
 
 </section>
 
-<!--
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
-
-    -->

@@ -93,7 +93,7 @@ namespace Phase2.Controllers
             }
             
             
-            return Index();
+            return Redirect("Index");
         }
 
         private Post GetCurrentPost()

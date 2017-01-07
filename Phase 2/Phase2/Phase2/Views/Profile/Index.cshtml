@@ -1,0 +1,62 @@
+﻿<aside>
+    <div id="profile">Logged in as user1234 <a href="#">Logout</a></div>
+    <div><input id="searchBox" type="text" placeholder="Search" /><img alt="Search" id="searchImage" src="images/search.png" /></div>
+    <div id="categoryFilters">
+        <ul>
+            <li>@ViewBag.User.Posts.Count posts</li>
+            <li>@ViewBag.User.Comments.Count comments</li>
+            <li>59% upvotes</li>
+            <li>Register date: @ViewBag.RegDate</li>
+        </ul>
+    </div>
+</aside>
+
+<section>
+
+    <h1 class="center width100">user1234's Profile page</h1>
+
+
+
+    <h2 class="width50 center">Change profile details</h2>
+    <div id="changeCredentialsWrapper">
+        <form method="POST" id="changeCredentialsForm">
+            <label>Change Email: </label><input id="changeEmailInput" type="text" value="user1234@gmail.com" /><span class="hidden" id="emailChangedNote">Email changed</span><br />
+            <label>Change Password:</label><input class="changePasswordInput" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br />
+            <label>Repeat Password:</label><input class="changePasswordInput" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br />
+            <input type="submit" value="Apply changes" />
+        </form>
+    </div>
+    <br />
+
+    <h2 class="width50 center">Posts</h2>
+
+    @foreach (Phase2.Models.Post Post in ViewBag.User.Posts)
+    {
+        <article class="fullPost">
+            <div class="voteDiv"><span class="voteNumber">@Post.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="postTitle">@Html.ActionLink((string)Post.Title, "Index", "Post", new { @postId = Post.PostId }, null)</div>
+            <div class="postCategory">
+                @foreach (var Category in Post.Categories)
+                {
+                    <span class="categoryTag">@Category.Name</span>
+                }
+            </div>
+            <div class="postDetails"><span class="commentCounter">@Post.Comments.Count comments</span> | <span>Posted on @Post.CreationDate</span> | <span>Posted by @Post.User.Username</span></div>
+        </article>
+    }
+
+    <h2 class="width50 center">Comments</h2>
+
+    @foreach (Phase2.Models.Comment Comment in ViewBag.User.Comments)
+    {
+        <article class="commentChain" id="comment_@Comment.CommentId">
+            <div class="voteDiv"><span class="voteNumber">@Comment.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="postContent">
+                @Comment.Content
+            </div>
+            <div class="postDetails"><span>Posted on @Comment.CreationDate</span> | <span>Posted by @Comment.User.Username</span> | @Html.ActionLink("Go to post", "Index", "Post", new { @postId = Comment.Post.PostId}, null)</div>
+       </article>
+    }
+
+
+</section>

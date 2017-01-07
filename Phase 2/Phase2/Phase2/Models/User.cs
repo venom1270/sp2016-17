@@ -21,5 +21,6 @@ namespace Phase2.Models
         public DateTime RegistrationDate { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; } 
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
