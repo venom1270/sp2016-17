@@ -159,9 +159,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NewPostController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,12 +180,22 @@
     <Compile Include="Migrations\201612252042070_InitialCreate.Designer.cs">
       <DependentUpon>201612252042070_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701121639055_AddedUserRoles.cs" />
+    <Compile Include="Migrations\201701121639055_AddedUserRoles.Designer.cs">
+      <DependentUpon>201701121639055_AddedUserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701121725264_AddedUserRoles2.cs" />
+    <Compile Include="Migrations\201701121725264_AddedUserRoles2.Designer.cs">
+      <DependentUpon>201701121725264_AddedUserRoles2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AuthorizationFilters.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\EntityManager\EntityDataModel.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +254,8 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\NewPost\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612172201297_Initial.resx">
@@ -252,6 +266,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612252042070_InitialCreate.resx">
       <DependentUpon>201612252042070_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701121639055_AddedUserRoles.resx">
+      <DependentUpon>201701121639055_AddedUserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701121725264_AddedUserRoles2.resx">
+      <DependentUpon>201701121725264_AddedUserRoles2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

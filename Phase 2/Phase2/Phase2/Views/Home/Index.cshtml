@@ -1,21 +1,30 @@
-﻿@{
-    //ViewBag.Title = "Home Page";
-}
-
+﻿
 <aside>
     <div id="profile">
-        Logged in as @Html.ActionLink("PLACEHOLDER", "Index", "Profile") <a href="#">Logout</a><br />
-        <a href="register.html">Register new account.</a><br />
-        <div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
+        @if (Session["User"] == null)
+        {
+            @:You are not logged in. @Html.ActionLink("Login", "Index", "Login") / @Html.ActionLink("Register", "Index", "Register")<br />
+            <div id="newPost">You have to be logged in to create new posts.</div>
+        }
+        else
+        {
+            @:Logged in as @Html.ActionLink(((Phase2.Models.User)Session["User"]).Username, "Index", "Profile", new { user = ((Phase2.Models.User)Session["User"]).UserId }, null) @Html.ActionLink("Logout", "Logout", "Login", null, null)<br />
+            @:<div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
+        }
+        
     </div>
 
     <div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" alt="Search" src="~/Content/Images/search.png" /></div>
     <div id="categoryFilters">
         <span class="boldSpan">Filter by catogory</span>
-        <form id="categoryFilterForm" method="POST" action="index.html">
+        <form id="categoryFilterForm" method="GET" action="@Url.Action("Index")">
             @foreach (var Category in ViewBag.CategoriesList)
             {
-                <input type="checkbox" id="@Category.CategoryId" name="@Category.CategoryId"/><label><span class="categoryTag">@Category.Name</span></label><br />
+                <input type="checkbox" id="@Category.CategoryId" name="@Category.CategoryId" 
+                    @if (ViewBag.CategoryFilter.Contains(Category.CategoryId)) { 
+                        @:checked  
+                    }  
+                 /><label><span class="categoryTag">@Category.Name</span></label><br />
             }
                     
             <input type="submit" value="Apply filter" />
@@ -40,13 +49,15 @@
         </article>
     }
 
+    <!--
     <div class="pageNavigation">
         <form method="GET" action="index.html">
             <input type="button" value="Previous page" />
             <input type="button" value="Next page" />
         </form>
     </div>
-
+    -->
+    <br/>
     <!--<article>Post 2</article>
     <article>Post 3</article>-->
 

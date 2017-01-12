@@ -20,6 +20,7 @@ namespace Phase2.Models
         [Required]
         public DateTime RegistrationDate { get; set; }
 
+        public virtual UserRole Role { get; set; }
         public virtual ICollection<Post> Posts { get; set; } 
         public virtual ICollection<Comment> Comments { get; set; }
     }

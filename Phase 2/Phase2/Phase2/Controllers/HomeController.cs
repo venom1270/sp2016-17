@@ -15,9 +15,32 @@ namespace Phase2.Controllers
 
         public ActionResult Index()
         {
+            string x = Request["1"];
+
+            List<int> categoryFilter = new List<int>();
+            for (int i = 0; i < Request.QueryString.Count; i++)
+            {
+                if (Request.QueryString[Request.QueryString.Keys[i]] == "on")
+                {
+                    int cat = Convert.ToInt32(Request.QueryString.Keys[i]);
+                    categoryFilter.Add(cat);
+                }
+            }
+
             ViewBag.CategoriesList = db.Categories.ToList();
 
-            ViewBag.Posts = db.Posts.ToList();
+            ViewBag.CategoryFilter = categoryFilter;
+
+            if (categoryFilter.Count == 0)
+            {
+                ViewBag.Posts = db.Posts.ToList();
+            }
+            else
+            {
+                ViewBag.Posts = db.Posts.Where(p => p.Categories.Where(c => categoryFilter.Contains(c.CategoryId)).Any()).ToList();
+            }
+
+            
             
             return View();
         }

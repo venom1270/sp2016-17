@@ -10,6 +10,7 @@ using Phase2.Models;
 using Phase2.Models.EntityManager;
 using System.Net.Http;
 using System.Web.Helpers;
+using Microsoft.Ajax.Utilities;
 
 namespace Phase2.Controllers
 {
@@ -35,7 +36,7 @@ namespace Phase2.Controllers
             AntiForgery.Validate(cookieToken, formToken);
         }
 
-        // GET: Post
+
         public ActionResult Index()
         {
 
@@ -50,6 +51,8 @@ namespace Phase2.Controllers
             List<Comment> comments = db.Comments.Where(c => c.Post.PostId == postId && c.ParentCommentId == null).ToList();
             ViewBag.Comments = comments;
 
+            ViewBag.CreationDate = post.CreationDate.ToShortDateString();
+
             return View("Index");
         }
 
@@ -57,6 +60,8 @@ namespace Phase2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NewComment()
         {
+            if (Session["User"] == null) return Redirect("/");
+
             try
             {
                 string commentContent = Request["newCommentText"];
@@ -68,7 +73,8 @@ namespace Phase2.Controllers
                     newComment.Content = commentContent;
                     newComment.CreationDate = DateTime.Now;
                     newComment.Post = GetCurrentPost();
-                    newComment.User = newComment.Post.User;
+                    Phase2.Models.User tmp = (Phase2.Models.User) Session["User"];
+                    newComment.User = db.Users.Where(u => u.Username == tmp.Username).FirstOrDefault();
                     newComment.Upvotes = 0;
 
                     if (parentComment != null && parentComment != "")
@@ -93,7 +99,23 @@ namespace Phase2.Controllers
             }
             
             
-            return Redirect("Index");
+            return RedirectToAction("Index", new { postId = GetCurrentPostId()} );
+        }
+
+        public ActionResult DeleteComment()
+        {
+            string commentIdString = Request["commentId"];
+
+            if (commentIdString.IsNullOrWhiteSpace() == false)
+            {
+                int commentId = Convert.ToInt32(commentIdString);
+                Comment comment = db.Comments.Find(commentId);
+                comment.Content = "[ DELETED ]";
+
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new { postId = GetCurrentPostId() });
         }
 
         private Post GetCurrentPost()

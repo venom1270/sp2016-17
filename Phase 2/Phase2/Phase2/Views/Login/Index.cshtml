@@ -1,0 +1,23 @@
+﻿
+<h2 class="center">Login</h2>
+
+<section id="loginWrapper">
+
+    @if (ViewBag.Errors != null)
+    {
+        foreach (string error in ViewBag.Errors)
+        {
+            <div style="color:red;" class="center">@error</div><br/>
+        }
+    }
+
+    <form id="loginForm" method="POST" action="@Url.Action("TryLogin", "Login")">
+        <label>Username:</label> <input type="text" name="username"/><br />
+        <label>Password:</label> <input type="password" name="password"/><br />
+        <input type="submit" value="Login" />
+    </form>
+
+    <div class="center">Don't have an account? @Html.ActionLink("Register here", "Index", "Register").</div>
+
+</section>
+

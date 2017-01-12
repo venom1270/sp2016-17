@@ -26,6 +26,7 @@ namespace Phase2.Models.EntityManager
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
 
     }
 

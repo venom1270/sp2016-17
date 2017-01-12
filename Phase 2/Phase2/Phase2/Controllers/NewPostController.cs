@@ -25,6 +25,8 @@ namespace Phase2.Controllers
         {
             try
             {
+                if (Session["User"] == null) return View("Index");
+
                 string postTitle = Request["postTitle"];
                 string postContent = Request["postContent"];
 
@@ -36,7 +38,8 @@ namespace Phase2.Controllers
                     newPost.Title = postTitle;
                     newPost.CreationDate = DateTime.Now;
                     newPost.Upvotes = 0;
-                    newPost.User = db.Users.Where(u => u.Username == "Žiga").First();
+                    User tmpUser = (User)Session["User"];
+                    newPost.User = db.Users.Where(u => u.Username == tmpUser.Username).FirstOrDefault();
                     List<Category> categories = new List<Category>();
                     for (int i = 0; i < postCategories.Length; i++)
                     {
