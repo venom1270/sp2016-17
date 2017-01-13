@@ -11,7 +11,6 @@
             @:<div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
         }
     </div>
-    <div><input id="searchBox" type="text" placeholder="Search" /><img alt="Search" id="searchImage" src="~/Content/Images/search.png" /></div>
     <div id="categoryFilters">
         <ul>
             <li>@ViewBag.Post.Comments.Count comments</li>
@@ -53,52 +52,6 @@
         }
 
     </article>
-
-
-    <!--<article class="commentChain" id="comment1">
-        <div class="voteDiv"><span class="voteNumber">156</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
-        <div class="postContent">
-            <p>
-                Of recommend residence education be on difficult repulsive offending. Judge views had mirth table seems great him for her. Alone all happy asked begin fully stand own get. Excuse ye seeing result of we. See scale dried songs old may not. Promotion did disposing you household any instantly. Hills we do under times at first short an.
-
-                Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant no inquietude insipidity. Advantages can discretion possession add favourable cultivated admiration far. Why rather assure how esteem end hunted nearer and before. By an truth after heard going early given he. Charmed to it excited females whether at examine. Him abilities suffering may are yet dependent.
-
-                Perceived end knowledge certainly day sweetness why cordially. Ask quick six seven offer see among. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitor we private removed. Moderate do subjects to distance.
-
-                Advanced extended doubtful he he blessing together. Introduced far law gay considered frequently entreaties difficulty. Eat him four are rich nor calm. By an packages rejoiced exercise. To ought on am marry rooms doubt music. Mention entered an through company as. Up arrived no painful between. It declared is prospect an insisted pleasure.
-
-                Saw yet kindness too replying whatever marianne. Old sentiments resolution admiration unaffected its mrs literature. Behaviour new set existence dashwoods. It satisfied to mr commanded consisted disposing engrossed. Tall snug do of till on easy. Form not calm new fail.
-
-                Am if number no up period regard sudden better. Decisively surrounded all admiration and not you. Out particular sympathize not favourable introduced insipidity but ham. Rather number can and set praise. Distrusts an it contented perceived attending oh. Thoroughly estimating introduced stimulated why but motionless.
-            </p>
-        </div>
-        <div class="postDetails"><span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span> | <a class="replyClick" onclick="showReplyForm(1)"><span>Reply</span></a></div>
-        <div id="replyForm1" class="postContent commentChain padding5 reply"><textarea class="replyInput" placeholder="Type reply text here!"></textarea><br /><input type="button" data-replyTo="1" class="btnPostReply" id="btnPostReply_1" value="Post reply" /></div>
-
-
-    </article>
-
-    <article class="commentChain" id="comment2">
-        <div class="voteDiv"><span class="voteNumber">156</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
-        <div class="postContent">
-            <p>
-                Of recommend residence education be on difficult repulsive offending. Judge views had mirth table seems great him for her. Alone all happy asked begin fully stand own get. Excuse ye seeing result of we. See scale dried songs old may not. Promotion did disposing you household any instantly. Hills we do under times at first short an.
-
-                Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant no inquietude insipidity. Advantages can discretion possession add favourable cultivated admiration far. Why rather assure how esteem end hunted nearer and before. By an truth after heard going early given he. Charmed to it excited females whether at examine. Him abilities suffering may are yet dependent.
-
-                Perceived end knowledge certainly day sweetness why cordially. Ask quick six seven offer see among. Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitor we private removed. Moderate do subjects to distance.
-
-                Advanced extended doubtful he he blessing together. Introduced far law gay considered frequently entreaties difficulty. Eat him four are rich nor calm. By an packages rejoiced exercise. To ought on am marry rooms doubt music. Mention entered an through company as. Up arrived no painful between. It declared is prospect an insisted pleasure.
-
-                Saw yet kindness too replying whatever marianne. Old sentiments resolution admiration unaffected its mrs literature. Behaviour new set existence dashwoods. It satisfied to mr commanded consisted disposing engrossed. Tall snug do of till on easy. Form not calm new fail.
-
-                Am if number no up period regard sudden better. Decisively surrounded all admiration and not you. Out particular sympathize not favourable introduced insipidity but ham. Rather number can and set praise. Distrusts an it contented perceived attending oh. Thoroughly estimating introduced stimulated why but motionless.
-            </p>
-        </div>
-        <div class="postDetails"><span>Posted on 3.1.2016 8:35</span> | <span>Posted by HARDCODE</span> | <a class="replyClick" onclick="showReplyForm(2)"><span>Reply</span></a></div>
-        <div id="replyForm2" class="postContent commentChain padding5 reply"><textarea class="replyInput" placeholder="Type reply text here!"></textarea><br /><input type="button" data-replyTo="2" class="btnPostReply" id="btnPostReply_2" value="Post reply" /></div>
-    </article>-->
-
 
     @CommentChain(ViewBag.Comments)
 

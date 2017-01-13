@@ -18,25 +18,12 @@ namespace Phase2.Controllers
     {
         private EntityDataModel db = new EntityDataModel();
 
-        private void ValidateRequestHeader(HttpRequestMessage request)
-        {
-            string cookieToken = "";
-            string formToken = "";
-
-            IEnumerable<string> tokenHeaders;
-            if (request.Headers.TryGetValues("RequestVerificationToken", out tokenHeaders))
-            {
-                string[] tokens = tokenHeaders.First().Split(':');
-                if (tokens.Length == 2)
-                {
-                    cookieToken = tokens[0].Trim();
-                    formToken = tokens[1].Trim();
-                }
-            }
-            AntiForgery.Validate(cookieToken, formToken);
-        }
-
-
+        /// <summary>
+        ///     Base Post view.
+        ///     Displays the post with the same ID as the GET parameter postId.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult Index()
         {
 
@@ -56,8 +43,13 @@ namespace Phase2.Controllers
             return View("Index");
         }
 
-        // POST new comment
+        /// <summary>
+        ///     Called when user creates a new comment (root comment or a child comment).
+        ///     Only Users and Admins have acces to this method.
+        /// </summary>
+        /// <returns></returns>
         [ValidateAntiForgeryToken]
+        [AuthorizationFilter("User", "Admin")]
         public ActionResult NewComment()
         {
             if (Session["User"] == null) return Redirect("/");
@@ -102,6 +94,12 @@ namespace Phase2.Controllers
             return RedirectToAction("Index", new { postId = GetCurrentPostId()} );
         }
 
+        /// <summary>
+        ///     Called when DELETE under a comment is pressed.
+        ///     Only ADMINS have acces to this method.
+        /// </summary>
+        /// <returns></returns>
+        [AuthorizationFilter("Admin")]
         public ActionResult DeleteComment()
         {
             string commentIdString = Request["commentId"];
@@ -118,11 +116,19 @@ namespace Phase2.Controllers
             return RedirectToAction("Index", new { postId = GetCurrentPostId() });
         }
 
+        /// <summary>
+        ///     Helper private method to get model Post from current postId.
+        /// </summary>
+        /// <returns></returns>
         private Post GetCurrentPost()
         {
             return GetPostById(GetCurrentPostId());
         }
 
+        /// <summary>
+        ///     Helper private method to parse postId GET parameter.
+        /// </summary>
+        /// <returns></returns>
         private int GetCurrentPostId()
         {
             if (Request.QueryString["postId"] == null)
@@ -136,9 +142,14 @@ namespace Phase2.Controllers
             }
         }
 
+        /// <summary>
+        ///     Helper private method to return model Post based on integer postId.
+        /// </summary>
+        /// <param name="postId">Integer representing PostId of the Post you want returned.</param>
+        /// <returns></returns>
         private Post GetPostById(int postId)
         {
-            return db.Posts.Where(p => p.PostId == postId).FirstOrDefault(); ;
+            return db.Posts.Where(p => p.PostId == postId).FirstOrDefault();
         }
 
     }

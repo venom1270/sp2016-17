@@ -1,0 +1,17 @@
+2017-01-13 21:36:14,909 [7] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 21:58:14,214 [7] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 21:58:14,687 [8] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 21:58:22,396 [7] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-13 21:58:22,403 [7] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 21:58:34,155 [7] INFO  Phase2.Controllers.NewPostController - NewPost: user qwe created new post titled Nov post
+2017-01-13 21:58:34,158 [8] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 21:59:05,739 [7] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 21:59:14,442 [10] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-13 21:59:16,051 [7] DEBUG Phase2.Controllers.HomeController - ASDKLJASLKDJASLKDJLKAJSKLDJLKASJKLD HEHEH LOG
+2017-01-13 22:11:21,184 [6] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-13 22:17:27,082 [8] INFO  Phase2.Controllers.RegisterController - Register: new user with username test
+2017-01-13 22:19:16,426 [7] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: test
+2017-01-13 22:19:18,955 [7] WARN  Phase2.Controllers.ProfileController - ChangeProfile: passwords don't match
+2017-01-13 22:19:18,955 [7] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: test
+2017-01-13 22:19:21,915 [8] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: test
+2017-01-13 22:20:07,967 [25] INFO  Phase2.Controllers.NewPostController - NewPost: user test created new post titled sadasd

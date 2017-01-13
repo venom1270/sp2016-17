@@ -61,3 +61,16 @@ C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phas
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.InitialCreate.resources
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.AddedUserRoles.resources
 C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\obj\Debug\Phase2.Migrations.AddedUserRoles2.resources
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Microsoft.Extensions.Logging.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Microsoft.Extensions.Logging.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\log4net.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\LogWeb.log4net.WebAppender.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\System.Net.Http.Formatting.dll
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\log4net.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\System.Net.Http.Formatting.xml
+C:\Users\zigsi\Desktop\FRI git\SP\sp2016-17\Phase 2\Phase2\Phase2\bin\documentation.XML

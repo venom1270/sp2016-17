@@ -14,22 +14,27 @@
         
     </div>
 
-    <div><input id="searchBox" type="text" placeholder="Search" /><img id="searchImage" alt="Search" src="~/Content/Images/search.png" /></div>
-    <div id="categoryFilters">
-        <span class="boldSpan">Filter by catogory</span>
-        <form id="categoryFilterForm" method="GET" action="@Url.Action("Index")">
+    <h2 style="margin-left:10px;">Filters</h2>
+
+    <form id="categoryFilterForm" method="GET" action="@Url.Action("Index")">
+    <div>
+        <input id="searchBox" name="searchFilter" type="text" placeholder="Search filter" value="@Request["searchFilter"]"/>
+    </div>
+        <div id="categoryFilters">
+            <div class="boldSpan">Category filter</div>
+
             @foreach (var Category in ViewBag.CategoriesList)
             {
-                <input type="checkbox" id="@Category.CategoryId" name="@Category.CategoryId" 
-                    @if (ViewBag.CategoryFilter.Contains(Category.CategoryId)) { 
-                        @:checked  
-                    }  
-                 /><label><span class="categoryTag">@Category.Name</span></label><br />
+                <input type="checkbox" id="@Category.CategoryId" name="@Category.CategoryId"
+                       @if (ViewBag.CategoryFilter.Contains(Category.CategoryId)) { @: checked
+                                                                  } /><label><span class="categoryTag">@Category.Name</span></label><br />
             }
-                    
+            <br/>
             <input type="submit" value="Apply filter" />
-        </form>
-    </div>
+
+
+        </div>
+    </form>
 </aside>
 
 <section>

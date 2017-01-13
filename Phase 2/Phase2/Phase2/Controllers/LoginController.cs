@@ -14,13 +14,24 @@ namespace Phase2.Controllers
     {
 
         private EntityDataModel db = new EntityDataModel();
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        // GET: Login
+        /// <summary>
+        ///     Base Login view.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        ///     Validates data and sets the session variable if data is correct.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult TryLogin()
         {
             
@@ -44,7 +55,9 @@ namespace Phase2.Controllers
             if (Errors.Count > 0)
             {
                 ViewBag.Errors = Errors;
+                logger.Warn("Login: Invalid login data received");
                 return View("Index");
+
             }
 
             
@@ -54,6 +67,7 @@ namespace Phase2.Controllers
             if (user == null)
             {
                 Errors.Add("Username and password combination not found! Please check your input.");
+                logger.Warn("Login: user with inputted username does not exist");
                 return View("Index");
             }
 
@@ -63,14 +77,22 @@ namespace Phase2.Controllers
             if (doesPasswordMatch == false)
             {
                 Errors.Add("Username and password combination not found! Please check your input.");
+                logger.Warn("Login: username and password combination doesen't match");
                 return View("Index");
             }
+
+            logger.Info("Login: User with username " + user.Username + " logged in!");
 
             Session["User"] = user;
             return Redirect("/");
 
         }
 
+        /// <summary>
+        ///     Resets session variable and redirects to "/".
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             Session["User"] = null;

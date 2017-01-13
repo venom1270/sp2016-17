@@ -12,6 +12,7 @@
     }
 
     <form id="loginForm" method="POST" action="@Url.Action("TryLogin", "Login")">
+        @Html.AntiForgeryToken()
         <label>Username:</label> <input type="text" name="username"/><br />
         <label>Password:</label> <input type="password" name="password"/><br />
         <input type="submit" value="Login" />

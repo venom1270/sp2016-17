@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Phase2</name>
+    </assembly>
+    <members>
+        <member name="M:Phase2.Controllers.HomeController.Index">
+            <summary>
+                Base Root view.
+                Checks for filters and displays appropriate posts.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.LoginController.Index">
+            <summary>
+                Base Login view.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.LoginController.TryLogin">
+            <summary>
+                Validates data and sets the session variable if data is correct.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.LoginController.Logout">
+            <summary>
+                Resets session variable and redirects to "/".
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.NewPostController.Index">
+            <summary>
+                Base NewPost view.
+                Only Users and Admins have acces to this method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.NewPostController.Submit(System.String[])">
+            <summary>
+                Called when submit on the new post form is pressed.
+                Only Users and Admins have acces to this method.
+            </summary>
+            <param name="postCategories">Categories the post will belong to</param>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.PostController.Index">
+            <summary>
+                Base Post view.
+                Displays the post with the same ID as the GET parameter postId.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.PostController.NewComment">
+            <summary>
+                Called when user creates a new comment (root comment or a child comment).
+                Only Users and Admins have acces to this method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.PostController.DeleteComment">
+            <summary>
+                Called when DELETE under a comment is pressed.
+                Only ADMINS have acces to this method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.PostController.GetCurrentPost">
+            <summary>
+                Helper private method to get model Post from current postId.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.PostController.GetCurrentPostId">
+            <summary>
+                Helper private method to parse postId GET parameter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.PostController.GetPostById(System.Int32)">
+            <summary>
+                Helper private method to return model Post based on integer postId.
+            </summary>
+            <param name="postId">Integer representing PostId of the Post you want returned.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.ProfileController.Index">
+            <summary>
+                Base Profile view.
+                Receives 'userId' GET parameter; if it's null it redirects to "/"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.ProfileController.ChangeProfile">
+            <summary>
+                Called when user click apply on change profile form.
+                Changes the User model data of current user according to input.
+                Only Users and Admins have acces to this method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.ProfileController.getUserId">
+            <summary>
+                A helper private function to parse userId from GET request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.RegisterController.Index">
+            <summary>
+                Base register view
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Phase2.Controllers.RegisterController.TryRegister">
+            <summary>
+                Method called when user clicks the subitm button on the register form
+                Adds a new user to the database and redirects to "/" if successful
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

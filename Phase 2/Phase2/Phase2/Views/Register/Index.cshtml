@@ -12,6 +12,7 @@
     }
 
     <form id="registerForm" method="POST" action="@Url.Action("TryRegister", "Register")">
+        @Html.AntiForgeryToken()
         <label>Username:</label> <input type="text" name="username" required/><br />
         <label>Password:</label> <input type="password" name="password" required/><br />
         <label>Repeat password:</label> <input type="password" name="passwordRepeat" required/><br />

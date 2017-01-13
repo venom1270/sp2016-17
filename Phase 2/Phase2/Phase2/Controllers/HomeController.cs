@@ -1,4 +1,6 @@
-﻿using Phase2.Models;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.Extensions.Logging;
+using Phase2.Models;
 using Phase2.Models.EntityManager;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,14 @@ namespace Phase2.Controllers
     {
         private EntityDataModel db = new EntityDataModel();
 
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
+        ///     Base Root view.
+        ///     Checks for filters and displays appropriate posts.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult Index()
         {
             string x = Request["1"];
@@ -27,42 +37,33 @@ namespace Phase2.Controllers
                 }
             }
 
+            string searchFilter = Request["searchFilter"];
+
             ViewBag.CategoriesList = db.Categories.ToList();
 
             ViewBag.CategoryFilter = categoryFilter;
 
+            List<Post> Posts;
+
             if (categoryFilter.Count == 0)
             {
-                ViewBag.Posts = db.Posts.ToList();
+                Posts = db.Posts.ToList();
             }
             else
             {
-                ViewBag.Posts = db.Posts.Where(p => p.Categories.Where(c => categoryFilter.Contains(c.CategoryId)).Any()).ToList();
+                Posts = db.Posts.Where(p => p.Categories.Where(c => categoryFilter.Contains(c.CategoryId)).Any()).ToList();
             }
 
-            
-            
-            return View();
-        }
+            if (searchFilter.IsNullOrWhiteSpace() == false)
+            {
+                Posts = Posts.Where(p => p.Title.ToLower().Contains(searchFilter.ToLower())).ToList();
+            }
 
-        /*public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            Models.EntityManager.EntityDataModel em = new Models.EntityManager.EntityDataModel();
-
-            Post p = em.Posts.Find(1);
-            Console.WriteLine(p.Content);
-            
+            ViewBag.Posts = Posts;
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }*/
+     
     }
 }

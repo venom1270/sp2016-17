@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Phase2.Controllers
 {
@@ -14,14 +15,28 @@ namespace Phase2.Controllers
     {
         private EntityDataModel db = new EntityDataModel();
 
-        // GET: Register
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        /// <summary>
+        ///     Base register view
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        ///     Method called when user clicks the subitm button on the register form
+        ///     Adds a new user to the database and redirects to "/" if successful
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult TryRegister()
         {
+            
             List<string> Errors = new List<string>();
 
             ViewBag.Errors = Errors;
@@ -51,6 +66,7 @@ namespace Phase2.Controllers
             if (Errors.Count > 0)
             {
                 ViewBag.Errors = Errors;
+                logger.Warn("Register: received invalid registration data");
                 return View("Index");
             }
 
@@ -59,6 +75,7 @@ namespace Phase2.Controllers
             if (inPassword != inPassword2)
             {
                 Errors.Add("Passwords don't match!");
+                logger.Info("Register: received invalid registration data");
                 return View("Index");
             }
 
@@ -68,6 +85,7 @@ namespace Phase2.Controllers
             if (user != null)
             {
                 Errors.Add("Username alreay exists. Please use another one.");
+                logger.Info("Register: username already exists");
                 return View("Index");
             }
 
@@ -78,6 +96,7 @@ namespace Phase2.Controllers
             if (userRole == null)
             {
                 Errors.Add("An error has occured during registration. Please conatact system administrator for further help.");
+                logger.Error("Register: role 'User' not found in database. got caught in userRole == null");
                 return View("Index");
             }
 
@@ -94,11 +113,13 @@ namespace Phase2.Controllers
                 db.Users.Add(newUser);
                 db.SaveChanges();
                 Session["User"] = newUser;
+                logger.Info("Register: new user with username " + newUser.Username);
                 return Redirect("/");
             }
             catch (Exception e)
             {
                 Errors.Add("An error has occured during registration. Please conatact system administrator for further help.");
+                logger.Error("Register: general registartion error. Stack trace: " + e.Message);
                 return View("Index");
             }
             

@@ -17,13 +17,42 @@ namespace Phase2.Models
                 return;
             }
 
+            User user = (User)HttpContext.Current.Session["User"];
+
             // Check for authorization
-            if (HttpContext.Current.Session["user"] == null)
+            if (user == null)
             {
-                filterContext.Result = filterContext.Result = new HttpUnauthorizedResult();
+                filterContext.Result = new HttpUnauthorizedResult();
+                return;
             }
 
-            // TODO: AUTHORIZE USER
+            // TODO: AUTHORIZE USER            
+
+            bool authorized = false;
+            
+            foreach (var role in this.rolesAllowed)
+            {
+                if (user.Role.RoleTitle == role)
+                {
+                    authorized = true;
+                    break;
+                }
+            }
+
+            if (!authorized)
+            {
+                filterContext.Result = new HttpUnauthorizedResult();
+            }
         }
+
+        private string[] rolesAllowed { get; set; }
+        public AuthorizationFilter(params string[] rolesAllowed)
+        {
+            if (rolesAllowed.Length == 0)
+                throw new ArgumentException("RolesRequired");
+            this.rolesAllowed = rolesAllowed.ToArray();
+        }
+
+
     }
 }
