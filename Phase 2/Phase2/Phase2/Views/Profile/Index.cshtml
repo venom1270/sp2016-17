@@ -47,7 +47,7 @@
     @foreach (Phase2.Models.Post Post in ViewBag.User.Posts)
     {
         <article class="fullPost">
-            <div class="voteDiv"><span class="voteNumber">@Post.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="voteDiv"></div>
             <div class="postTitle">@Html.ActionLink((string)Post.Title, "Index", "Post", new { @postId = Post.PostId }, null)</div>
             <div class="postCategory">
                 @foreach (var Category in Post.Categories)
@@ -64,7 +64,7 @@
     @foreach (Phase2.Models.Comment Comment in ViewBag.User.Comments)
     {
         <article class="commentChain" id="comment_@Comment.CommentId">
-            <div class="voteDiv"><span class="voteNumber">@Comment.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="voteDiv"></div>
             <div class="postContent">
                 @Comment.Content
             </div>

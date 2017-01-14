@@ -42,7 +42,7 @@
     @foreach (var Post in ViewBag.Posts)
     {
         <article>
-            <div class="voteDiv"><span class="voteNumber">@Post.Upvotes</span><div class="voteArrow upvoteArrow"></div><div class="voteArrow downvoteArrow"></div></div>
+            <div class="voteDiv"></div>
             <div class="postTitle">@Html.ActionLink((string)Post.Title, "Index", "Post", new { @postId = Post.PostId }, null)</div>
             <div class="postCategory">
                 @foreach (var Category in Post.Categories)
