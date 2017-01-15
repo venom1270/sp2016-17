@@ -1,0 +1,76 @@
+﻿<aside>
+    <div id="profile">
+        @if (Session["User"] == null)
+        {
+            @:You are not logged in. @Html.ActionLink("Login", "Index", "Login") / @Html.ActionLink("Register", "Index", "Register")<br />
+            <div id="newPost">You have to be logged in to create new posts.</div>
+        }
+        else
+        {
+            @:Logged in as @Html.ActionLink(((Phase2.Models.User)Session["User"]).Username, "Index", "Profile", new { user = ((Phase2.Models.User)Session["User"]).UserId }, null) @Html.ActionLink("Logout", "Logout", "Login", null, null)<br />
+            @:<div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
+        }
+    </div>
+    <div id="categoryFilters">
+        <ul>
+            <li>@ViewBag.User.Posts.Count posts</li>
+            <li>@ViewBag.User.Comments.Count comments</li>
+            <li>59% upvotes</li>
+            <li>Register date: @ViewBag.RegDate</li>
+        </ul>
+    </div>
+</aside>
+
+<section>
+
+    <h1 class="center width100"> @ViewBag.User.Username's Profile page</h1>
+
+    @if (Session["User"] != null && ((Phase2.Models.User)Session["User"]).Username == ViewBag.User.Username)
+    {
+        <h2 class="width50 center">Change profile details</h2>
+        <div id="changeCredentialsWrapper">
+            <form method="POST" id="changeCredentialsForm" action="@Url.Action("ChangeProfile", "Profile", new { user = ViewBag.User.UserId })">
+                @Html.AntiForgeryToken()
+                <label>Change Email: </label><input id="changeEmailInput" name="email" type="text" value="@ViewBag.User.Email" /><span class="hidden" id="emailChangedNote">Email changed</span><br />
+                <label>Change Password:</label><input class="changePasswordInput" name="password" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br />
+                <label>Repeat Password:</label><input class="changePasswordInput" name="passwordRepeat" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br />
+                <input type="submit" value="Apply changes" />
+            </form>
+        </div>
+        <br />
+    }
+
+    
+
+    <h2 class="width50 center">Posts</h2>
+
+    @foreach (Phase2.Models.Post Post in ViewBag.User.Posts)
+    {
+        <article class="fullPost">
+            <div class="voteDiv"></div>
+            <div class="postTitle">@Html.ActionLink((string)Post.Title, "Index", "Post", new { @postId = Post.PostId }, null)</div>
+            <div class="postCategory">
+                @foreach (var Category in Post.Categories)
+                {
+                    <span class="categoryTag">@Category.Name</span>
+                }
+            </div>
+            <div class="postDetails"><span class="commentCounter">@Post.Comments.Count comments</span> | <span>Posted on @Post.CreationDate</span></div>
+        </article>
+    }
+
+    <h2 class="width50 center">Comments</h2>
+
+    @foreach (Phase2.Models.Comment Comment in ViewBag.User.Comments)
+    {
+        <article class="commentChain" id="comment_@Comment.CommentId">
+            <div class="voteDiv"></div>
+            <div class="postContent">
+                @Comment.Content
+            </div>
+            <div class="postDetails"><span>Posted on @Comment.CreationDate</span> | <span>Posted by @Comment.User.Username</span> | @Html.ActionLink("Go to post", "Index", "Post", new { @postId = Comment.Post.PostId}, null)</div>
+       </article>
+    }
+
+
+</section>

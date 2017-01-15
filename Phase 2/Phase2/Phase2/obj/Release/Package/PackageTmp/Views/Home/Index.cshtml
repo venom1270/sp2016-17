@@ -1,0 +1,70 @@
+﻿
+<aside>
+    <div id="profile">
+        @if (Session["User"] == null)
+        {
+            @:You are not logged in. @Html.ActionLink("Login", "Index", "Login") / @Html.ActionLink("Register", "Index", "Register")<br />
+            <div id="newPost">You have to be logged in to create new posts.</div>
+        }
+        else
+        {
+            @:Logged in as @Html.ActionLink(((Phase2.Models.User)Session["User"]).Username, "Index", "Profile", new { user = ((Phase2.Models.User)Session["User"]).UserId }, null) @Html.ActionLink("Logout", "Logout", "Login", null, null)<br />
+            @:<div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
+        }
+        
+    </div>
+
+    <h2 style="margin-left:10px;">Filters</h2>
+
+    <form id="categoryFilterForm" method="GET" action="@Url.Action("Index")">
+    <div>
+        <input id="searchBox" name="searchFilter" type="text" placeholder="Search filter" value="@Request["searchFilter"]"/>
+    </div>
+        <div id="categoryFilters">
+            <div class="boldSpan">Category filter</div>
+
+            @foreach (var Category in ViewBag.CategoriesList)
+            {
+                <input type="checkbox" id="@Category.CategoryId" name="@Category.CategoryId"
+                       @if (ViewBag.CategoryFilter.Contains(Category.CategoryId)) { @: checked
+                                                                  } /><label><span class="categoryTag">@Category.Name</span></label><br />
+            }
+            <br/>
+            <input type="submit" value="Apply filter" />
+
+
+        </div>
+    </form>
+</aside>
+
+<section>
+
+    @foreach (var Post in ViewBag.Posts)
+    {
+        <article>
+            <div class="voteDiv"></div>
+            <div class="postTitle">@Html.ActionLink((string)Post.Title, "Index", "Post", new { @postId = Post.PostId }, null)</div>
+            <div class="postCategory">
+                @foreach (var Category in Post.Categories)
+                {
+                    <span class="categoryTag">@Category.Name</span>
+                }
+            </div>
+            <div class="postDetails"><span class="commentCounter">@Post.Comments.Count comments</span> | <span>Posted on @Post.CreationDate</span> | <span>Posted by @Post.User.Username</span></div>
+        </article>
+    }
+
+    <!--
+    <div class="pageNavigation">
+        <form method="GET" action="index.html">
+            <input type="button" value="Previous page" />
+            <input type="button" value="Next page" />
+        </form>
+    </div>
+    -->
+    <br/>
+    <!--<article>Post 2</article>
+    <article>Post 3</article>-->
+
+</section>
+

@@ -40,7 +40,7 @@ namespace Phase2.Controllers
 
             ViewBag.User = user;
             ViewBag.RegDate = user.RegistrationDate.ToShortDateString();
-
+            if (ViewBag.Messages == null) ViewBag.Messages = new List<string>();
 
             return View();
         }
@@ -55,6 +55,8 @@ namespace Phase2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangeProfile()
         {
+
+           List<string> Messages = new List<string>();
 
             string inEmail = Request["email"];
             string inPassword1 = Request["password"];
@@ -72,6 +74,7 @@ namespace Phase2.Controllers
             if (inEmail.IsNullOrWhiteSpace() == false)
             {
                 tmp.Email = inEmail;
+                Messages.Add("Email changed successfully");
             }
 
             if (inPassword1.IsNullOrWhiteSpace() == false && inPassword2.IsNullOrWhiteSpace() == false)
@@ -81,16 +84,20 @@ namespace Phase2.Controllers
                     string hashedPassword = Crypto.HashPassword(inPassword1);
                     tmp.Password = hashedPassword;
                     tmp.Salt = hashedPassword;
+                    Messages.Add("Password changed successfully");
                 }
                 else
                 {
                     logger.Warn("ChangeProfile: passwords don't match");
+                    Messages.Add("Passwords don't match!");
                 }
             }
 
             db.SaveChanges();
 
             logger.Info("ChangeProfile: succsessfully updated user profile: " + tmp.Username);
+
+            ViewBag.Messages = Messages;
 
             return RedirectToAction("Index", new { user = Request["user"] });
 

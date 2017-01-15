@@ -96,7 +96,7 @@ namespace Phase2.Controllers
 
         /// <summary>
         ///     Called when DELETE under a comment is pressed.
-        ///     Only ADMINS have acces to this method.
+        ///     Only ADMINS have access to this method.
         /// </summary>
         /// <returns></returns>
         [AuthorizationFilter("Admin")]
@@ -109,6 +109,27 @@ namespace Phase2.Controllers
                 int commentId = Convert.ToInt32(commentIdString);
                 Comment comment = db.Comments.Find(commentId);
                 comment.Content = "[ DELETED ]";
+
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new { postId = GetCurrentPostId() });
+        }
+
+        /// <summary>
+        ///     Called when DELETE under a post is pressed.
+        ///     Only ADMINS have access to this method.
+        /// </summary>
+        /// <returns></returns>
+        [AuthorizationFilter("Admin")]
+        public ActionResult DeletePost()
+        {
+            int postId = GetCurrentPostId();
+
+            if (postId != -1)
+            {
+                Post post = db.Posts.Find(postId);
+                post.Content = "[ DELETED ]";
 
                 db.SaveChanges();
             }
@@ -133,7 +154,7 @@ namespace Phase2.Controllers
         {
             if (Request.QueryString["postId"] == null)
             {
-                return 1;
+                return -1;
             }
             else
             {

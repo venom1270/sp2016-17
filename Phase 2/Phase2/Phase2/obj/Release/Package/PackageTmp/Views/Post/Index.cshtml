@@ -1,0 +1,106 @@
+﻿<aside>
+    <div id="profile">
+        @if (Session["User"] == null)
+        {
+            @:You are not logged in. @Html.ActionLink("Login", "Index", "Login") / @Html.ActionLink("Register", "Index", "Register")<br />
+            <div id="newPost">You have to be logged in to create new posts.</div>
+        }
+        else
+        {
+            @:Logged in as @Html.ActionLink(((Phase2.Models.User)Session["User"]).Username, "Index", "Profile", new { user = ((Phase2.Models.User)Session["User"]).UserId }, null) @Html.ActionLink("Logout", "Logout", "Login", null, null)<br />
+            @:<div id="newPost">@Html.ActionLink("Create new post", "Index", "NewPost", null, null)</div>
+        }
+    </div>
+    <div id="categoryFilters">
+        <ul>
+            <li>@ViewBag.Post.Comments.Count comments</li>
+            <li>Created on @ViewBag.CreationDate</li>
+        </ul>
+    </div>
+</aside>
+
+<section>
+    <article id="fullPost">
+        <div class="voteDiv"></div>
+        <div class="postTitle">@ViewBag.Post.Title</div>
+        <div class="postCategory">
+            @foreach (var Category in ViewBag.Post.Categories)
+            {
+                <span class="categoryTag">@Category.Name</span>
+            }
+        </div>
+        <div class="postContent">@ViewBag.Post.Content</div>
+        <div class="postDetails"><span class="commentCounter">@ViewBag.Post.Comments.Count replies</span> | <span>Posted on @ViewBag.Post.CreationDate</span> | <span>Posted by @Html.ActionLink((string)@ViewBag.Post.User.Username, "Index", "Profile", new { user=ViewBag.Post.User.UserId }, null)</span></div>
+    </article>
+
+    <hr />
+
+    <article id="newComment">
+        NEW COMMENT<br />
+
+        @if (Session["User"] == null)
+        {
+            @:Login to comment
+        }
+        else
+        {
+            @:<form method="post" action="@Url.Action("NewComment", "Post", new { @postId = ViewBag.Post.PostId })">
+                @Html.AntiForgeryToken()
+                <textarea id="newCommentText" name="newCommentText" class="replyInput" placeholder="Comment text here!"></textarea>
+                <br /><input id="btnPostComment" type="submit" value="Post comment" />
+            @:</form>
+        }
+
+    </article>
+
+    @CommentChain(ViewBag.Comments)
+
+
+</section>
+
+@helper CommentChain(IEnumerable<Phase2.Models.Comment> Comments)
+{
+    foreach (Phase2.Models.Comment Comment in Comments)
+    {
+        <article class="commentChain" id="comment_@Comment.CommentId">
+            <div class="voteDiv"></div>
+            <div class="postContent">
+                @Comment.Content
+            </div>
+            <div class="postDetails"><span>Posted on @Comment.CreationDate</span> | <span>Posted by @Html.ActionLink((string)Comment.User.Username, "Index", "Profile", new { user = Comment.User.UserId }, null)</span>
+            
+
+
+            @if (Session["User"] == null)
+            {
+                 @:</div>
+            }
+            else
+            {
+
+                if (((Phase2.Models.User)Session["User"]).Role.RoleTitle == "Admin")
+                {
+                    @:| <span>@Html.ActionLink("DELETE", "DeleteComment", "Post", new { postId = ViewBag.Post.PostId, commentId = Comment.CommentId }, null)</span>
+                }
+
+
+                @:| <a class="replyClick" onclick="showReplyForm(@Comment.CommentId)"><span>Reply</span></a></div>
+                @:<div id="replyForm_@Comment.CommentId" class="postContent commentChain padding5 reply">
+                @:    <form method="post" action="@Url.Action("NewComment", "Post", new { @postId = ViewBag.Post.PostId })">
+                        @Html.AntiForgeryToken()
+                @:        <textarea name="newCommentText" class="replyInput" placeholder="Type reply text here!"></textarea><br />
+                @:        <input type="text" style="display:none;" value="@Comment.CommentId" name="textParentComment" id="textParentComment" />
+                @:        <!--<input type="button" data-replyTo="" class="btnPostReply" id="btnPostReply_" value="Post reply" />-->
+                @:        <input type="submit" value="Post reply" class="btnPostReply" />
+                @:    </form>
+                @:</div>
+            }
+
+            
+            @if (Comment.ChildComments != null && Comment.ChildComments.Any())
+            {
+                @CommentChain(Comment.ChildComments)
+            }
+        </article>
+    }
+}

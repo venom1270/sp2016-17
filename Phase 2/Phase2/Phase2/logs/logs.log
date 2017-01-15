@@ -944,3 +944,20 @@
 2017-01-14 22:43:41,542 [24] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
 2017-01-14 22:43:47,278 [7] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
 2017-01-14 23:42:38,291 [7] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:36:58,697 [8] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:44:47,148 [7] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:47:41,425 [7] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:51:18,240 [7] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:52:27,714 [7] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:53:33,081 [5] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:53:47,127 [5] WARN  Phase2.Controllers.ProfileController - ChangeProfile: passwords don't match
+2017-01-15 16:53:47,128 [5] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:55:08,021 [6] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:55:45,718 [5] INFO  Phase2.Controllers.LoginController - Login: User with username qwe logged in!
+2017-01-15 16:55:52,936 [5] WARN  Phase2.Controllers.ProfileController - ChangeProfile: passwords don't match
+2017-01-15 16:55:52,937 [5] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:56:30,762 [5] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:56:32,716 [5] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:56:35,481 [5] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:56:52,289 [8] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe
+2017-01-15 16:57:04,059 [5] INFO  Phase2.Controllers.ProfileController - ChangeProfile: succsessfully updated user profile: qwe

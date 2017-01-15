@@ -3,7 +3,7 @@
 <section id="newPostWrapper">
 
     <form id="newPostForm" method="POST" action="@Url.Action("Submit", "NewPost", null)">
-        @Html.AntiForgeryToken();
+        @Html.AntiForgeryToken()
         <label>Title:</label><br />
         <input class="width100" type="text" id="inputPostTitle" name="postTitle" /><br />
         <label>Content:</label>

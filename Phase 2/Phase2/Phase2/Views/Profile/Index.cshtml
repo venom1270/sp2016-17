@@ -1,4 +1,5 @@
-﻿<aside>
+﻿
+<aside>
     <div id="profile">
         @if (Session["User"] == null)
         {
@@ -15,7 +16,7 @@
         <ul>
             <li>@ViewBag.User.Posts.Count posts</li>
             <li>@ViewBag.User.Comments.Count comments</li>
-            <li>59% upvotes</li>
+            <li>Role: @ViewBag.User.Role.RoleTitle</li>
             <li>Register date: @ViewBag.RegDate</li>
         </ul>
     </div>
@@ -27,11 +28,19 @@
 
     @if (Session["User"] != null && ((Phase2.Models.User)Session["User"]).Username == ViewBag.User.Username)
     {
+        @Scripts.Render("~/Scripts/profile.js")
+
+        foreach(var m in ViewBag.Messages)
+        {
+            <h3>@m</h3>
+        }
+
+
         <h2 class="width50 center">Change profile details</h2>
         <div id="changeCredentialsWrapper">
             <form method="POST" id="changeCredentialsForm" action="@Url.Action("ChangeProfile", "Profile", new { user = ViewBag.User.UserId })">
                 @Html.AntiForgeryToken()
-                <label>Change Email: </label><input id="changeEmailInput" name="email" type="text" value="@ViewBag.User.Email" /><span class="hidden" id="emailChangedNote">Email changed</span><br />
+                <label>Change Email: </label><input id="changeEmailInput" name="email" type="email" value="@ViewBag.User.Email" /><span class="hidden" id="emailChangedNote">Email changed</span><br />
                 <label>Change Password:</label><input class="changePasswordInput" name="password" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br />
                 <label>Repeat Password:</label><input class="changePasswordInput" name="passwordRepeat" type="password" value="" /><span class="passwordChangedNote hidden">Password changed</span><br />
                 <input type="submit" value="Apply changes" />

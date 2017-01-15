@@ -30,7 +30,14 @@
             }
         </div>
         <div class="postContent">@ViewBag.Post.Content</div>
-        <div class="postDetails"><span class="commentCounter">@ViewBag.Post.Comments.Count replies</span> | <span>Posted on @ViewBag.Post.CreationDate</span> | <span>Posted by @Html.ActionLink((string)@ViewBag.Post.User.Username, "Index", "Profile", new { user=ViewBag.Post.User.UserId }, null)</span></div>
+        <div class="postDetails"><span class="commentCounter">@ViewBag.Post.Comments.Count replies</span> | <span>Posted on @ViewBag.Post.CreationDate</span> | <span>Posted by @Html.ActionLink((string)@ViewBag.Post.User.Username, "Index", "Profile", new { user=ViewBag.Post.User.UserId }, null)</span>
+        
+        @if (Session["User"] != null && ((Phase2.Models.User)Session["User"]).Role.RoleTitle == "Admin")
+        {
+        @:| <span>@Html.ActionLink("DELETE", "DeletePost", "Post", new { postId = ViewBag.Post.PostId }, null)</span>
+        }
+        
+        </div>
     </article>
 
     <hr />

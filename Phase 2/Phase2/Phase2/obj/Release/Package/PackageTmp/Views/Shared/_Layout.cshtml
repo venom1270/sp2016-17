@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Forum - landing</title>
+
+    <link href="~/Content/css.css" rel="stylesheet" />
+
+    @Scripts.Render("~/Scripts/js.js")
+
+    
+    
+</head>
+<body>
+    <div id="content">
+
+        <header><a href=@Url.Action("Index", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)><img src="~/Content/Images/logo.png" alt="LOGO" /></a></header>
+      
+
+        @RenderBody()
+
+
+
+        <footer>
+            <h4>Copyright &copy; @DateTime.Now.Year</h4>
+        </footer>
+    </div>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

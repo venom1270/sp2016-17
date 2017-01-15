@@ -1,0 +1,24 @@
+﻿<h2 class="center">New post</h2>
+
+<section id="newPostWrapper">
+
+    <form id="newPostForm" method="POST" action="@Url.Action("Submit", "NewPost", null)">
+        @Html.AntiForgeryToken();
+        <label>Title:</label><br />
+        <input class="width100" type="text" id="inputPostTitle" name="postTitle" /><br />
+        <label>Content:</label>
+        <textarea id="inputPostContent" class="width100" name="postContent"></textarea><br />
+        <label>Choose category tags:</label>
+        <div id="categoryDiv">
+            @foreach (var Category in ViewBag.CategoriesList)
+            {
+                <input type="checkbox" id="@Category.CategoryId" name="postCategories" value="@Category.CategoryId"><label><span class="categoryTag">@Category.Name</span></label>
+            }
+        </div>
+        <input class="width100" type="submit" value="Make post" />
+        <br />
+        <div class="center">@Html.ActionLink("Back", "Index", "Home", null, null)</div>
+    </form>
+
+
+</section>

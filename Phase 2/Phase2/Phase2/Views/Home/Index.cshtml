@@ -21,7 +21,7 @@
         <input id="searchBox" name="searchFilter" type="text" placeholder="Search filter" value="@Request["searchFilter"]"/>
     </div>
         <div id="categoryFilters">
-            <div class="boldSpan">Category filter</div>
+            <!--<div class="boldSpan">Category filter</div>-->
 
             @foreach (var Category in ViewBag.CategoriesList)
             {
@@ -50,7 +50,7 @@
                     <span class="categoryTag">@Category.Name</span>
                 }
             </div>
-            <div class="postDetails"><span class="commentCounter">@Post.Comments.Count comments</span> | <span>Posted on @Post.CreationDate</span> | <span>Posted by @Post.User.Username</span></div>
+            <div class="postDetails"><span class="commentCounter">@Post.Comments.Count comments</span> | <span>Posted on @Post.CreationDate</span> | <span>Posted by @Html.ActionLink((string)@Post.User.Username, "Index", "Profile", new { user = Post.User.UserId }, null)</span></div>
         </article>
     }
 
